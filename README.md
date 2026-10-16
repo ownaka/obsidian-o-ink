@@ -110,9 +110,10 @@ Se preferir não usar o plugin, a pasta [`snippets`](snippets/) tem dois exemplo
 
 ## Desenvolvimento
 
-O código do tema fica em `src/o-ink.css`. O `theme.css` é gerado a partir dele, com a fonte embutida:
+O código do tema fica em `src/o-ink.css`. O `theme.css` é gerado a partir dele, com a fonte embutida. Para deixar o arquivo leve, o script embute só os caracteres usados em português e nos símbolos do tema, então precisa do [fonttools](https://github.com/fonttools/fonttools):
 
 ```bash
+pip install fonttools brotli
 python3 scripts/build.py
 ```
 

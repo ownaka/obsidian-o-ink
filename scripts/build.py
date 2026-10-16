@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 import argparse
 import base64
+import io
 import json
+import logging
 import shutil
+import sys
 from pathlib import Path
+
+try:
+    from fontTools import subset
+except ImportError:
+    sys.exit("O build precisa do fonttools e do brotli: pip install fonttools brotli")
+
+logging.getLogger("fontTools").setLevel(logging.ERROR)
 
 ROOT = Path(__file__).resolve().parent.parent
 FONTS = ROOT / "assets" / "fonts"
@@ -13,11 +23,33 @@ MANIFEST = ROOT / "manifest.json"
 
 VARIANTS = [("400", "normal"), ("400", "italic"), ("700", "normal"), ("700", "italic")]
 
+# Basic Latin, Latin-1 (acentos), pontuação tipográfica, setas e os símbolos do tema
+UNICODES = [
+    *range(0x0020, 0x007F),
+    *range(0x00A0, 0x0100),
+    *range(0x2010, 0x2028),
+    0x2030, 0x2039, 0x203A,
+    *range(0x2190, 0x219A),
+    0x2550,
+]
+
+
+def subset_woff2(path: Path) -> bytes:
+    options = subset.Options()
+    options.flavor = "woff2"
+    font = subset.load_font(str(path), options)
+    subsetter = subset.Subsetter(options)
+    subsetter.populate(unicodes=UNICODES)
+    subsetter.subset(font)
+    out = io.BytesIO()
+    subset.save_font(font, out, options)
+    return out.getvalue()
+
 
 def font_faces() -> str:
     faces = ["/* Commit Mono, Eigil Nikolajsen, SIL Open Font License 1.1 */"]
     for weight, style in VARIANTS:
-        data = (FONTS / f"commit-mono-latin-{weight}-{style}.woff2").read_bytes()
+        data = subset_woff2(FONTS / f"commit-mono-latin-{weight}-{style}.woff2")
         b64 = base64.b64encode(data).decode("ascii")
         faces.append(
             "@font-face {\n"
