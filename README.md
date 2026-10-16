@@ -1,4 +1,6 @@
-# ☵ Ownaka para Obsidian
+# ☵ O-Ink para Obsidian
+
+**O** de Ownaka, **Ink** de tinta e de E-Ink.
 
 Tema minimalista em estilo **E-Ink**, feito a partir da identidade visual de [ownaka.net](https://ownaka.net).
 Fundo de pontinhos quase imperceptível, tipografia **Commit Mono** em tudo, cantos retos, bordas finas e um único verde de destaque, o mesmo do selo "online" do site.
@@ -6,8 +8,8 @@ Fundo de pontinhos quase imperceptível, tipografia **Commit Mono** em tudo, can
 > Entender como algo funciona por dentro é a melhor parte. Explicar pra alguém é a segunda.
 
 <!-- Adicione aqui os prints reais do tema:
-![Ownaka — modo escuro](assets/screenshots/dark.png)
-![Ownaka — modo claro](assets/screenshots/light.png)
+![O-Ink — modo escuro](assets/screenshots/dark.png)
+![O-Ink — modo claro](assets/screenshots/light.png)
 -->
 
 ## Princípios
@@ -22,14 +24,14 @@ Fundo de pontinhos quase imperceptível, tipografia **Commit Mono** em tudo, can
 ### Manual
 
 1. Baixe `theme.css` e `manifest.json` (ou a release mais recente).
-2. No seu cofre, crie a pasta `.obsidian/themes/Ownaka/` e coloque os dois arquivos nela.
-3. Em **Configurações → Aparência → Temas**, escolha **Ownaka**.
+2. No seu cofre, crie a pasta `.obsidian/themes/O-Ink/` e coloque os dois arquivos nela.
+3. Em **Configurações → Aparência → Temas**, escolha **O-Ink**.
 
 ### Pela linha de comando
 
 ```bash
-git clone https://github.com/ownaka/obsidian-ownaka.git
-cd obsidian-ownaka
+git clone https://github.com/ownaka/obsidian-o-ink.git
+cd obsidian-o-ink
 python3 scripts/build.py --vault "~/caminho/do/seu/cofre"
 ```
 
@@ -99,22 +101,22 @@ Coloque nas propriedades da nota:
 ```yaml
 ---
 cssclasses:
-  - ownaka-numbered
+  - o-ink-numbered
 ---
 ```
 
 | Classe | Efeito |
 | --- | --- |
-| `ownaka-numbered` | Numera os H2 como os cards do site: `[01]`, `[02]`… |
-| `ownaka-wide` | Deixa a nota mais larga |
-| `ownaka-cards` | Cada H2 vira o topo de um card |
-| `ownaka-center` | Centraliza título e parágrafos |
-| `ownaka-dots-off` | Tira os pontinhos só desta nota |
-| `ownaka-eink-off` | Mostra as imagens desta nota em cores |
+| `o-ink-numbered` | Numera os H2 como os cards do site: `[01]`, `[02]`… |
+| `o-ink-wide` | Deixa a nota mais larga |
+| `o-ink-cards` | Cada H2 vira o topo de um card |
+| `o-ink-center` | Centraliza título e parágrafos |
+| `o-ink-dots-off` | Tira os pontinhos só desta nota |
+| `o-ink-eink-off` | Mostra as imagens desta nota em cores |
 
 ## Personalização com Style Settings
 
-Com o plugin [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) instalado, aparece uma seção **Ownaka** com:
+Com o plugin [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) instalado, aparece uma seção **O-Ink** com:
 
 - Cor de destaque, cor do texto e cor de fundo (separadas para claro e escuro)
 - Liga/desliga, intensidade e espaçamento dos pontinhos
@@ -140,7 +142,7 @@ python3 scripts/build.py --vault ~/MeuCofre   # gera e instala no cofre
 
 Depois, no Obsidian, use o comando **Recarregar o app sem salvar** pra ver as mudanças.
 
-Sugestões e problemas são bem-vindos nas [issues](https://github.com/ownaka/obsidian-ownaka/issues).
+Sugestões e problemas são bem-vindos nas [issues](https://github.com/ownaka/obsidian-o-ink/issues).
 
 ## Créditos
 
@@ -153,6 +155,6 @@ Código sob licença MIT. A fonte Commit Mono segue a [SIL Open Font License 1.1
 
 ---
 
-**English:** Ownaka is a minimal E-Ink style theme for Obsidian, based on [ownaka.net](https://ownaka.net). Subtle dot-grid background, Commit Mono everywhere (bundled), square corners, thin borders and a single green accent. Supports Style Settings, alternate checkboxes, custom callouts (`card`, `terminal`, `online`) and per-note `cssclasses`.
+**English:** O-Ink is a minimal E-Ink style theme for Obsidian, based on [ownaka.net](https://ownaka.net). Subtle dot-grid background, Commit Mono everywhere (bundled), square corners, thin borders and a single green accent. Supports Style Settings, alternate checkboxes, custom callouts (`card`, `terminal`, `online`) and per-note `cssclasses`.
 
 Feito por [João Prado (ownaka)](https://ownaka.net).

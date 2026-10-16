@@ -1,16 +1,16 @@
 /* ==========================================================================
-   OWNAKA — tema para Obsidian
+   O-INK — tema para Obsidian
    E-Ink Dark Minimal · Commit Mono · cantos retos · dot grid sutil
    Baseado em ownaka.net · por João Prado (ownaka)
    ========================================================================== */
 
 /* @settings
 
-name: Ownaka
-id: ownaka
+name: O-Ink
+id: o-ink
 settings:
     -
-        id: ownaka-cores
+        id: o-ink-cores
         title: Cores
         type: heading
         level: 1
@@ -42,13 +42,13 @@ settings:
         default-light: '#e6e1d5'
         default-dark: '#0c0c0c'
     -
-        id: ownaka-fundo
+        id: o-ink-fundo
         title: Fundo de pontinhos
         type: heading
         level: 1
         collapsed: true
     -
-        id: ownaka-dots-off
+        id: o-ink-dots-off
         title: Desligar os pontinhos
         type: class-toggle
         default: false
@@ -70,46 +70,46 @@ settings:
         step: 2
         format: px
     -
-        id: ownaka-texto
+        id: o-ink-texto
         title: Texto e leitura
         type: heading
         level: 1
         collapsed: true
     -
-        id: ownaka-font-off
+        id: o-ink-font-off
         title: Usar a fonte do sistema em vez da Commit Mono
         description: Mantém o visual, mas troca a tipografia pela fonte que você escolher nas configurações de Aparência.
         type: class-toggle
         default: false
     -
-        id: ownaka-numbered
+        id: o-ink-numbered
         title: Numerar títulos H2 em todas as notas
-        description: Mostra [01], [02]... antes de cada H2, como os cards do site. Também funciona por nota com cssclasses ownaka-numbered.
+        description: Mostra [01], [02]... antes de cada H2, como os cards do site. Também funciona por nota com cssclasses o-ink-numbered.
         type: class-toggle
         default: false
     -
-        id: ownaka-dash-off
+        id: o-ink-dash-off
         title: Usar bolinhas nas listas em vez do traço "–"
         type: class-toggle
         default: false
     -
-        id: ownaka-midia
+        id: o-ink-midia
         title: Imagens e interações
         type: heading
         level: 1
         collapsed: true
     -
-        id: ownaka-eink-off
+        id: o-ink-eink-off
         title: Desligar o filtro E-Ink nas imagens
         type: class-toggle
         default: false
     -
-        id: ownaka-flash-off
+        id: o-ink-flash-off
         title: Desligar o flash E-Ink nos botões
         type: class-toggle
         default: false
     -
-        id: ownaka-status-off
+        id: o-ink-status-off
         title: Esconder o indicador "online" na barra de status
         type: class-toggle
         default: false
@@ -120,11 +120,11 @@ settings:
    1. FONTE E FORMA
    ========================================================================== */
 body {
-  --ownaka-font: 'Commit Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --o-ink-font: 'Commit Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
-  --font-text-theme: var(--ownaka-font);
-  --font-interface-theme: var(--ownaka-font);
-  --font-monospace-theme: var(--ownaka-font);
+  --font-text-theme: var(--o-ink-font);
+  --font-interface-theme: var(--o-ink-font);
+  --font-monospace-theme: var(--o-ink-font);
 
   --font-text-size: 15px;
   --font-ui-small: 12px;
@@ -192,7 +192,7 @@ body {
   --input-shadow-hover: none;
 }
 
-body.ownaka-font-off {
+body.o-ink-font-off {
   --font-text-theme: initial;
   --font-interface-theme: initial;
   --font-monospace-theme: initial;
@@ -358,7 +358,7 @@ body.ownaka-font-off {
   --table-header-background: var(--o-bg-card);
   --table-header-background-hover: var(--o-bg-hover);
   --table-header-color: var(--o-muted);
-  --table-header-font: var(--ownaka-font);
+  --table-header-font: var(--o-ink-font);
   --table-row-alt-background: transparent;
   --table-row-background-hover: var(--o-bg-hover);
   --table-selection: color-mix(in srgb, var(--o-green) 18%, transparent);
@@ -462,8 +462,8 @@ body.ownaka-font-off {
   position: relative;
 }
 
-body:not(.ownaka-dots-off) .workspace-leaf-content[data-type="markdown"] .view-content::before,
-body:not(.ownaka-dots-off) .workspace-leaf-content[data-type="empty"] .view-content::before {
+body:not(.o-ink-dots-off) .workspace-leaf-content[data-type="markdown"] .view-content::before,
+body:not(.o-ink-dots-off) .workspace-leaf-content[data-type="empty"] .view-content::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -481,8 +481,8 @@ body:not(.ownaka-dots-off) .workspace-leaf-content[data-type="empty"] .view-cont
   background-color: transparent;
 }
 
-/* Desligar por nota: cssclasses: ownaka-dots-off */
-.workspace-leaf-content[data-type="markdown"] .view-content:has(.ownaka-dots-off)::before {
+/* Desligar por nota: cssclasses: o-ink-dots-off */
+.workspace-leaf-content[data-type="markdown"] .view-content:has(.o-ink-dots-off)::before {
   display: none;
 }
 
@@ -588,7 +588,7 @@ body:not(.native-scrollbars) ::-webkit-scrollbar-thumb:hover {
   border-left: 1px solid var(--o-border);
   padding: 2px 10px;
 }
-body:not(.ownaka-status-off) .status-bar::before {
+body:not(.o-ink-status-off) .status-bar::before {
   content: "";
   width: 7px;
   height: 7px;
@@ -617,12 +617,12 @@ button.mod-cta {
 button.mod-cta:hover {
   background-color: var(--o-white);
 }
-body:not(.ownaka-flash-off) button:not(.clickable-icon):active,
-body:not(.ownaka-flash-off) .mod-cta:active {
-  animation: ownaka-eink-flash 200ms steps(3, end);
+body:not(.o-ink-flash-off) button:not(.clickable-icon):active,
+body:not(.o-ink-flash-off) .mod-cta:active {
+  animation: o-ink-eink-flash 200ms steps(3, end);
 }
 
-@keyframes ownaka-eink-flash {
+@keyframes o-ink-eink-flash {
   0% { filter: none; }
   25% { filter: invert(1) contrast(180%); }
   60% { filter: invert(0.2) contrast(110%); }
@@ -772,22 +772,22 @@ textarea:focus {
   color: var(--o-faint);
 }
 
-/* Títulos numerados [01], [02]... (opção global ou cssclasses: ownaka-numbered) */
-body.ownaka-numbered .markdown-preview-sizer,
-.ownaka-numbered .markdown-preview-sizer,
-body.ownaka-numbered .cm-contentContainer,
-.ownaka-numbered .cm-contentContainer {
-  counter-reset: ownaka-h2;
+/* Títulos numerados [01], [02]... (opção global ou cssclasses: o-ink-numbered) */
+body.o-ink-numbered .markdown-preview-sizer,
+.o-ink-numbered .markdown-preview-sizer,
+body.o-ink-numbered .cm-contentContainer,
+.o-ink-numbered .cm-contentContainer {
+  counter-reset: o-ink-h2;
 }
-body.ownaka-numbered .markdown-rendered h2,
-.ownaka-numbered.markdown-rendered h2,
-.ownaka-numbered .markdown-rendered h2 {
-  counter-increment: ownaka-h2;
+body.o-ink-numbered .markdown-rendered h2,
+.o-ink-numbered.markdown-rendered h2,
+.o-ink-numbered .markdown-rendered h2 {
+  counter-increment: o-ink-h2;
 }
-body.ownaka-numbered .markdown-rendered h2::before,
-.ownaka-numbered.markdown-rendered h2::before,
-.ownaka-numbered .markdown-rendered h2::before {
-  content: "[" counter(ownaka-h2, decimal-leading-zero) "] ";
+body.o-ink-numbered .markdown-rendered h2::before,
+.o-ink-numbered.markdown-rendered h2::before,
+.o-ink-numbered .markdown-rendered h2::before {
+  content: "[" counter(o-ink-h2, decimal-leading-zero) "] ";
   color: var(--o-faint);
   font-weight: 400;
   font-size: 0.6em;
@@ -823,7 +823,7 @@ body.ownaka-numbered .markdown-rendered h2::before,
 }
 
 /* Listas com o traço "–" do site */
-body:not(.ownaka-dash-off) .list-bullet::after {
+body:not(.o-ink-dash-off) .list-bullet::after {
   content: "–";
   background-color: transparent;
   width: auto;
@@ -833,7 +833,7 @@ body:not(.ownaka-dash-off) .list-bullet::after {
   font-size: 0.95em;
   line-height: 1;
 }
-body:not(.ownaka-dash-off) .is-collapsed .list-bullet::after {
+body:not(.o-ink-dash-off) .is-collapsed .list-bullet::after {
   content: "+";
   color: var(--list-marker-color-collapsed);
   box-shadow: none;
@@ -1010,19 +1010,19 @@ li[data-task="-"],
   border-left: none;
 }
 
-/* Imagens com o filtro E-Ink (desligue na config ou com cssclasses: ownaka-eink-off) */
-body:not(.ownaka-eink-off) .markdown-rendered img,
-body:not(.ownaka-eink-off) .markdown-source-view img {
+/* Imagens com o filtro E-Ink (desligue na config ou com cssclasses: o-ink-eink-off) */
+body:not(.o-ink-eink-off) .markdown-rendered img,
+body:not(.o-ink-eink-off) .markdown-source-view img {
   filter: grayscale(100%) contrast(125%) brightness(95%) sepia(20%);
   transition: filter 0.25s ease;
 }
-body:not(.ownaka-eink-off) .markdown-rendered img:hover,
-body:not(.ownaka-eink-off) .markdown-source-view img:hover {
+body:not(.o-ink-eink-off) .markdown-rendered img:hover,
+body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   filter: grayscale(100%) contrast(135%) brightness(100%) sepia(15%);
 }
-.ownaka-eink-off img,
-.ownaka-eink-off .markdown-rendered img,
-.ownaka-eink-off.markdown-preview-view img {
+.o-ink-eink-off img,
+.o-ink-eink-off .markdown-rendered img,
+.o-ink-eink-off.markdown-preview-view img {
   filter: none !important;
 }
 .markdown-rendered img,
@@ -1167,24 +1167,24 @@ body:not(.ownaka-eink-off) .markdown-source-view img:hover {
 
 /* ==========================================================================
    8. CSSCLASSES POR NOTA
-   cssclasses: ownaka-wide · ownaka-numbered · ownaka-dots-off · ownaka-eink-off
-               ownaka-center · ownaka-cards
+   cssclasses: o-ink-wide · o-ink-numbered · o-ink-dots-off · o-ink-eink-off
+               o-ink-center · o-ink-cards
    ========================================================================== */
 
 /* Nota larga */
-.ownaka-wide {
+.o-ink-wide {
   --file-line-width: 1100px;
 }
 
 /* Título e texto centralizados, como a citação do site */
-.ownaka-center .inline-title,
-.ownaka-center .markdown-preview-sizer > div > p {
+.o-ink-center .inline-title,
+.o-ink-center .markdown-preview-sizer > div > p {
   text-align: center;
 }
 
 /* Cada H2 vira o topo de um card */
-.ownaka-cards.markdown-rendered h2,
-.ownaka-cards .markdown-rendered h2 {
+.o-ink-cards.markdown-rendered h2,
+.o-ink-cards .markdown-rendered h2 {
   border: 1px solid var(--o-border);
   border-bottom: none;
   background-color: var(--o-bg-card);
