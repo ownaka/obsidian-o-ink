@@ -32,7 +32,7 @@ Uma frase com nota de rodapé.[^1]
 
 ## Listas
 
-- Item com o traço do site
+- Item com o pontinho verde
 - Outro item
 	- Subitem
 	- Mais um

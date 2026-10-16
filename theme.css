@@ -82,8 +82,8 @@ settings:
         type: class-toggle
         default: false
     -
-        id: o-ink-dash-off
-        title: Usar bolinhas nas listas em vez do traço "–"
+        id: o-ink-dash-on
+        title: Usar traço – nas listas em vez do ponto verde
         type: class-toggle
         default: false
     -
@@ -169,6 +169,8 @@ body {
   --tag-padding-x: 7px;
   --tag-padding-y: 1px;
   --list-indent: 1.9em;
+  --list-bullet-size: 5px;
+  --list-bullet-radius: 0;
 
   --dot-opacity: 0.07;
   --dot-spacing: 24px;
@@ -320,8 +322,8 @@ body.o-ink-font-off {
   --hr-color: var(--o-border-strong);
   --hr-thickness: 1px;
 
-  --list-marker-color: var(--o-faint);
-  --list-marker-color-hover: var(--o-muted);
+  --list-marker-color: var(--o-green);
+  --list-marker-color-hover: color-mix(in srgb, var(--o-green) 80%, var(--o-white));
   --list-marker-color-collapsed: var(--o-green);
 
   --checkbox-color: var(--o-green);
@@ -766,23 +768,42 @@ body.o-ink-numbered .markdown-rendered h2::before,
   color: var(--o-faint);
 }
 
-body:not(.o-ink-dash-off) .list-bullet::after {
+body:not(.o-ink-dash-on) .list-bullet::after {
+  width: var(--list-bullet-size);
+  height: var(--list-bullet-size);
+  border-radius: 0;
+  background-color: var(--list-marker-color);
+}
+body:not(.o-ink-dash-on) .is-collapsed .list-bullet::after {
+  background-color: var(--list-marker-color-collapsed);
+  box-shadow: none;
+  outline: 1px solid var(--list-marker-color-collapsed);
+  outline-offset: 2px;
+}
+body:not(.o-ink-dash-on) .markdown-rendered li li > .list-bullet::after,
+body:not(.o-ink-dash-on) .HyperMD-list-line:not(.HyperMD-list-line-1) .list-bullet::after {
+  opacity: 0.6;
+}
+
+body.o-ink-dash-on .list-bullet::after {
   content: "–";
   background-color: transparent;
   width: auto;
   height: auto;
   border-radius: 0;
-  color: var(--list-marker-color);
+  color: var(--o-faint);
   font-size: 0.95em;
   line-height: 1;
 }
-body:not(.o-ink-dash-off) .is-collapsed .list-bullet::after {
+body.o-ink-dash-on .is-collapsed .list-bullet::after {
   content: "+";
   color: var(--list-marker-color-collapsed);
   box-shadow: none;
 }
-.markdown-rendered ol > li::marker {
-  color: var(--o-faint);
+
+.markdown-rendered ol > li::marker,
+.markdown-source-view.mod-cm6 .cm-formatting-list-ol {
+  color: var(--o-green);
   font-variant-numeric: tabular-nums;
 }
 

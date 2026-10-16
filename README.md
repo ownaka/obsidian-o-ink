@@ -39,7 +39,7 @@ O gráfico de conexões e o Canvas usam as mesmas cores, e o Canvas ganha os mes
 
 Os títulos têm uma hierarquia clara. O H2 ganha uma linha fina embaixo e o H3 recebe o `›` verde. Do H4 em diante, os títulos viram rótulos pequenos em caixa alta, e o H4 aparece entre colchetes, `[ASSIM]`, do jeito que os cards do site são identificados.
 
-As listas usam um traço `–` no lugar da bolinha. Negrito fica em branco, itálico em bege e o marca-texto em um verde translúcido. Links têm um sublinhado discreto, links para notas que ainda não existem ficam tracejados e links externos ganham uma setinha `↗`.
+As listas usam um pontinho quadrado verde no lugar da bolinha, um pouco mais apagado nos subníveis, e os números das listas numeradas também ficam em verde. Quem preferir pode voltar ao traço `–` pelo Style Settings. Negrito fica em branco, itálico em bege e o marca-texto em um verde translúcido. Links têm um sublinhado discreto, links para notas que ainda não existem ficam tracejados e links externos ganham uma setinha `↗`.
 
 Blocos de código e tabelas têm borda, e o cabeçalho das tabelas segue o mesmo estilo de rótulo. As imagens recebem um filtro em preto e branco com um toque de sépia, que fica um pouco mais nítido quando você passa o mouse. As propriedades da nota aparecem como um card.
 
@@ -98,7 +98,7 @@ Na pasta [`docs`](docs/) tem uma nota usando quase tudo isso. Vale copiar pro se
 
 ## Personalização
 
-Com o plugin [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) instalado, aparece uma seção do O·Ink nas configurações. Por lá dá pra trocar a cor de destaque, o texto e o fundo, ajustar a intensidade e o espaçamento dos pontinhos, voltar para a fonte do sistema, numerar os títulos em todas as notas, usar bolinhas nas listas e desligar o filtro das imagens, o flash dos botões ou o indicador da barra de status.
+Com o plugin [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) instalado, aparece uma seção do O·Ink nas configurações. Por lá dá pra trocar a cor de destaque, o texto e o fundo, ajustar a intensidade e o espaçamento dos pontinhos, voltar para a fonte do sistema, numerar os títulos em todas as notas, voltar ao traço `–` nas listas e desligar o filtro das imagens, o flash dos botões ou o indicador da barra de status.
 
 Se preferir não usar o plugin, a pasta [`snippets`](snippets/) tem dois exemplos que você pode copiar para `.obsidian/snippets/`: um troca as cores e os pontinhos, o outro usa uma fonte serifada no texto das notas mantendo a interface em Commit Mono.
 
