@@ -19,7 +19,9 @@ Tem também um modo claro, que inverte a lógica: papel envelhecido com tinta es
 
 ## Instalação
 
-Baixe o `theme.css` e o `manifest.json`, crie a pasta `.obsidian/themes/O·Ink/` dentro do seu cofre e coloque os dois arquivos lá. Depois, em **Configurações → Aparência → Temas**, é só escolher **O·Ink**.
+Baixe o `theme.css` e o `manifest.json`, crie a pasta `.obsidian/themes/O-Ink/` dentro do seu cofre e coloque os dois arquivos lá. Depois, em **Configurações → Aparência → Temas**, é só escolher **O-Ink**.
+
+O nome oficial do tema é O-Ink, com hífen, porque o diretório de temas do Obsidian só aceita caracteres simples. O·Ink, com o ponto no meio, é só a forma estilizada.
 
 Se você preferir pelo terminal:
 
