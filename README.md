@@ -1,5 +1,7 @@
 # O·Ink
 
+![Prévia do tema O·Ink](screenshot.png)
+
 Um tema para o [Obsidian](https://obsidian.md) que parece tinta em papel eletrônico.
 
 O nome junta duas coisas: o **O** vem de Ownaka, o apelido que eu uso em tudo, e o **Ink** vem de tinta e das telas E-Ink. O visual nasceu do meu site, [ownaka.net](https://ownaka.net). Eu gostava tanto de abrir ele que quis ter a mesma sensação no lugar onde passo mais tempo escrevendo.
