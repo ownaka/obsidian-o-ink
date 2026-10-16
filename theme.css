@@ -562,12 +562,27 @@ body:not(.o-ink-status-off) .status-bar::before {
   flex-shrink: 0;
 }
 
-button,
+button:where(:not(.clickable-icon, .view-action, .mobile-navbar-action)),
 .mod-cta,
 .dropdown {
   border: 1px solid var(--o-border-strong);
   box-shadow: none;
   letter-spacing: 0.03em;
+}
+.clickable-icon,
+.view-action,
+.view-header button,
+.mobile-navbar button,
+.mobile-navbar-action {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--icon-color);
+}
+.clickable-icon.is-active,
+.view-action.is-active,
+.mobile-navbar-action.is-active {
+  color: var(--icon-color-active);
 }
 button.mod-cta {
   background-color: var(--o-text);
@@ -575,7 +590,7 @@ button.mod-cta {
   border-color: var(--o-text);
 }
 @media (hover: hover) {
-  button:not(.clickable-icon):hover,
+  button:where(:not(.clickable-icon, .view-action, .mobile-navbar-action)):hover,
   .dropdown:hover {
     border-color: var(--o-text);
   }
@@ -583,7 +598,7 @@ button.mod-cta {
     background-color: var(--o-white);
   }
 }
-body:not(.o-ink-flash-off) button:not(.clickable-icon):active,
+body:not(.o-ink-flash-off) button:where(:not(.clickable-icon, .view-action, .mobile-navbar-action)):active,
 body:not(.o-ink-flash-off) .mod-cta:active {
   animation: o-ink-eink-flash 200ms steps(3, end);
 }
@@ -602,7 +617,7 @@ body:not(.o-ink-flash-off) .mod-cta:active {
   .clickable-icon {
     touch-action: manipulation;
   }
-  body:not(.o-ink-flash-off) button:not(.clickable-icon):active,
+  body:not(.o-ink-flash-off) button:where(:not(.clickable-icon, .view-action, .mobile-navbar-action)):active,
   body:not(.o-ink-flash-off) .mod-cta:active {
     animation-duration: 150ms;
   }
@@ -836,20 +851,24 @@ input[type="checkbox"]:checked::after {
   background-color: var(--o-green);
 }
 
-input[type="checkbox"][data-task="/"]:checked,
-input[type="checkbox"][data-task="-"]:checked,
-input[type="checkbox"][data-task=">"]:checked,
-input[type="checkbox"][data-task="!"]:checked,
-input[type="checkbox"][data-task="?"]:checked,
-input[type="checkbox"][data-task="*"]:checked {
-  -webkit-mask-image: none;
-}
-input[type="checkbox"][data-task="/"]:checked::after,
-input[type="checkbox"][data-task="-"]:checked::after,
-input[type="checkbox"][data-task=">"]:checked::after,
-input[type="checkbox"][data-task="!"]:checked::after,
-input[type="checkbox"][data-task="?"]:checked::after,
-input[type="checkbox"][data-task="*"]:checked::after {
+.markdown-rendered li[data-task="/"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="/"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="/"] .task-list-item-checkbox:checked::after,
+.markdown-rendered li[data-task="-"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="-"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] .task-list-item-checkbox:checked::after,
+.markdown-rendered li[data-task=">"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task=">"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task=">"] .task-list-item-checkbox:checked::after,
+.markdown-rendered li[data-task="!"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="!"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="!"] .task-list-item-checkbox:checked::after,
+.markdown-rendered li[data-task="?"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="?"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="?"] .task-list-item-checkbox:checked::after,
+.markdown-rendered li[data-task="*"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="*"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="*"] .task-list-item-checkbox:checked::after {
   -webkit-mask-image: none;
   mask-image: none;
   background-color: transparent;
@@ -860,51 +879,104 @@ input[type="checkbox"][data-task="*"]:checked::after {
   font-weight: 700;
   line-height: 1;
 }
-input[type="checkbox"][data-task="/"]:checked {
+
+.markdown-rendered li[data-task="/"] > input.task-list-item-checkbox:checked,
+.markdown-rendered input.task-list-item-checkbox[data-task="/"]:checked,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="/"] .task-list-item-checkbox:checked {
+  background: transparent;
   background: linear-gradient(135deg, color-mix(in srgb, var(--o-amber) 40%, transparent) 50%, transparent 50%);
   border-color: var(--o-amber);
 }
-input[type="checkbox"][data-task="-"]:checked {
+.markdown-rendered li[data-task="/"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="/"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="/"] .task-list-item-checkbox:checked::after {
+  content: "";
+}
+
+.markdown-rendered li[data-task="-"] > input.task-list-item-checkbox:checked,
+.markdown-rendered input.task-list-item-checkbox[data-task="-"]:checked,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] .task-list-item-checkbox:checked {
   background-color: transparent;
   border-color: var(--o-faint);
 }
-input[type="checkbox"][data-task="-"]:checked::after { content: "–"; color: var(--o-faint); }
-input[type="checkbox"][data-task=">"]:checked {
+.markdown-rendered li[data-task="-"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="-"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] .task-list-item-checkbox:checked::after {
+  content: "–";
+  color: var(--o-faint);
+}
+
+.markdown-rendered li[data-task=">"] > input.task-list-item-checkbox:checked,
+.markdown-rendered input.task-list-item-checkbox[data-task=">"]:checked,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task=">"] .task-list-item-checkbox:checked {
+  background-color: transparent;
   background-color: color-mix(in srgb, var(--o-blue) 15%, transparent);
   border-color: var(--o-blue);
 }
-input[type="checkbox"][data-task=">"]:checked::after { content: "›"; color: var(--o-blue); }
-input[type="checkbox"][data-task="!"]:checked {
+.markdown-rendered li[data-task=">"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task=">"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task=">"] .task-list-item-checkbox:checked::after {
+  content: "›";
+  color: var(--o-blue);
+}
+
+.markdown-rendered li[data-task="!"] > input.task-list-item-checkbox:checked,
+.markdown-rendered input.task-list-item-checkbox[data-task="!"]:checked,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="!"] .task-list-item-checkbox:checked {
+  background-color: transparent;
   background-color: color-mix(in srgb, var(--o-red) 15%, transparent);
   border-color: var(--o-red);
 }
-input[type="checkbox"][data-task="!"]:checked::after { content: "!"; color: var(--o-red); }
-input[type="checkbox"][data-task="?"]:checked {
+.markdown-rendered li[data-task="!"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="!"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="!"] .task-list-item-checkbox:checked::after {
+  content: "!";
+  color: var(--o-red);
+}
+
+.markdown-rendered li[data-task="?"] > input.task-list-item-checkbox:checked,
+.markdown-rendered input.task-list-item-checkbox[data-task="?"]:checked,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="?"] .task-list-item-checkbox:checked {
+  background-color: transparent;
   background-color: color-mix(in srgb, var(--o-amber) 15%, transparent);
   border-color: var(--o-amber);
 }
-input[type="checkbox"][data-task="?"]:checked::after { content: "?"; color: var(--o-amber); }
-input[type="checkbox"][data-task="*"]:checked {
+.markdown-rendered li[data-task="?"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="?"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="?"] .task-list-item-checkbox:checked::after {
+  content: "?";
+  color: var(--o-amber);
+}
+
+.markdown-rendered li[data-task="*"] > input.task-list-item-checkbox:checked,
+.markdown-rendered input.task-list-item-checkbox[data-task="*"]:checked,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="*"] .task-list-item-checkbox:checked {
+  background-color: transparent;
   background-color: color-mix(in srgb, var(--o-purple) 15%, transparent);
   border-color: var(--o-purple);
 }
-input[type="checkbox"][data-task="*"]:checked::after { content: "*"; color: var(--o-purple); }
+.markdown-rendered li[data-task="*"] > input.task-list-item-checkbox:checked::after,
+.markdown-rendered input.task-list-item-checkbox[data-task="*"]:checked::after,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="*"] .task-list-item-checkbox:checked::after {
+  content: "*";
+  color: var(--o-purple);
+}
 
-li[data-task="/"],
-li[data-task=">"],
-li[data-task="!"],
-li[data-task="?"],
-li[data-task="*"],
-.HyperMD-task-line[data-task="/"],
-.HyperMD-task-line[data-task=">"],
-.HyperMD-task-line[data-task="!"],
-.HyperMD-task-line[data-task="?"],
-.HyperMD-task-line[data-task="*"] {
+.markdown-rendered li.task-list-item[data-task="/"],
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="/"],
+.markdown-rendered li.task-list-item[data-task=">"],
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task=">"],
+.markdown-rendered li.task-list-item[data-task="!"],
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="!"],
+.markdown-rendered li.task-list-item[data-task="?"],
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="?"],
+.markdown-rendered li.task-list-item[data-task="*"],
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="*"] {
   text-decoration: none;
   color: var(--o-text);
 }
-li[data-task="-"],
-.HyperMD-task-line[data-task="-"] {
+.markdown-rendered li.task-list-item[data-task="-"],
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="-"] {
   text-decoration: line-through;
   color: var(--o-faint);
 }
@@ -1234,7 +1306,7 @@ body.is-mobile .markdown-source-view.mod-cm6 .cm-scroller {
   min-height: 44px;
   align-items: center;
 }
-.is-mobile button:not(.clickable-icon),
+.is-mobile button:where(:not(.clickable-icon, .view-action, .mobile-navbar-action)),
 .is-mobile .dropdown {
   min-height: 44px;
 }
@@ -1253,9 +1325,24 @@ body.is-mobile .markdown-source-view.mod-cm6 .cm-scroller {
 .is-mobile .view-header-title {
   font-size: var(--font-ui-small);
 }
-.is-mobile .view-header .clickable-icon:active,
-.is-mobile .mobile-toolbar-option:active,
-.is-mobile .mobile-navbar-action:active {
+body.is-mobile .view-header button,
+body.is-mobile .view-header .clickable-icon,
+body.is-mobile .view-action,
+body.is-mobile .mobile-navbar button,
+body.is-mobile .mobile-navbar-action {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--icon-color);
+}
+body.is-mobile .view-header .clickable-icon:active,
+body.is-mobile .view-header .clickable-icon.is-active,
+body.is-mobile .view-action:active,
+body.is-mobile .mobile-navbar-action:active,
+body.is-mobile .mobile-navbar-action.is-active {
+  color: var(--icon-color-active);
+}
+.is-mobile .mobile-toolbar-option:active {
   background-color: var(--o-bg-surface);
   color: var(--o-green);
 }
@@ -1272,13 +1359,31 @@ body.is-mobile .markdown-source-view.mod-cm6 .cm-scroller {
   color: var(--o-green);
 }
 
-.is-mobile .mobile-navbar {
+body.is-mobile .mobile-navbar {
+  margin: 0;
   background-color: var(--o-bg-page);
+  border: none;
   border-top: 1px solid var(--o-border);
+  border-radius: 0 !important;
   box-shadow: none;
 }
-.is-mobile .mobile-navbar-action {
-  color: var(--o-muted);
+body.is-mobile .mobile-navbar-actions {
+  background-color: transparent;
+  border: none;
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+body.is-mobile .mobile-navbar-action,
+body.is-mobile .view-header .view-actions,
+body.is-mobile .view-header .view-header-nav-buttons,
+body.is-mobile .view-header .view-action,
+body.is-mobile .view-header .clickable-icon,
+body.is-mobile .menu,
+body.is-mobile .menu-item,
+body.is-mobile .menu-grabber,
+body.is-mobile .suggestion-container,
+body.is-mobile .suggestion-item {
+  border-radius: 0 !important;
 }
 
 .is-mobile .workspace-drawer {
