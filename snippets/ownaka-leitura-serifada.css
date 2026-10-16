@@ -1,0 +1,4 @@
+/* Exemplo: mantém a interface em Commit Mono, mas usa uma fonte serifada no texto das notas. */
+body {
+  --font-text-theme: 'Iowan Old Style', 'Georgia', serif;
+}

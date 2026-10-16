@@ -1,0 +1,1215 @@
+/* ==========================================================================
+   OWNAKA — tema para Obsidian
+   E-Ink Dark Minimal · Commit Mono · cantos retos · dot grid sutil
+   Baseado em ownaka.net · por João Prado (ownaka)
+   ========================================================================== */
+
+/* @settings
+
+name: Ownaka
+id: ownaka
+settings:
+    -
+        id: ownaka-cores
+        title: Cores
+        type: heading
+        level: 1
+        collapsed: false
+    -
+        id: o-green
+        title: Cor de destaque
+        description: O verde "online" do site. Usado em checkboxes, links ativos, aba ativa e indicadores.
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#4c7a4e'
+        default-dark: '#689d6a'
+    -
+        id: o-text
+        title: Cor do texto
+        description: O bege de papel envelhecido (escuro) ou a tinta (claro).
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#141414'
+        default-dark: '#e6e1d5'
+    -
+        id: o-bg-page
+        title: Cor de fundo
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#e6e1d5'
+        default-dark: '#0c0c0c'
+    -
+        id: ownaka-fundo
+        title: Fundo de pontinhos
+        type: heading
+        level: 1
+        collapsed: true
+    -
+        id: ownaka-dots-off
+        title: Desligar os pontinhos
+        type: class-toggle
+        default: false
+    -
+        id: dot-opacity
+        title: Intensidade dos pontinhos
+        type: variable-number-slider
+        default: 0.07
+        min: 0.02
+        max: 0.25
+        step: 0.01
+    -
+        id: dot-spacing
+        title: Espaçamento entre os pontinhos
+        type: variable-number-slider
+        default: 24
+        min: 12
+        max: 48
+        step: 2
+        format: px
+    -
+        id: ownaka-texto
+        title: Texto e leitura
+        type: heading
+        level: 1
+        collapsed: true
+    -
+        id: ownaka-font-off
+        title: Usar a fonte do sistema em vez da Commit Mono
+        description: Mantém o visual, mas troca a tipografia pela fonte que você escolher nas configurações de Aparência.
+        type: class-toggle
+        default: false
+    -
+        id: ownaka-numbered
+        title: Numerar títulos H2 em todas as notas
+        description: Mostra [01], [02]... antes de cada H2, como os cards do site. Também funciona por nota com cssclasses ownaka-numbered.
+        type: class-toggle
+        default: false
+    -
+        id: ownaka-dash-off
+        title: Usar bolinhas nas listas em vez do traço "–"
+        type: class-toggle
+        default: false
+    -
+        id: ownaka-midia
+        title: Imagens e interações
+        type: heading
+        level: 1
+        collapsed: true
+    -
+        id: ownaka-eink-off
+        title: Desligar o filtro E-Ink nas imagens
+        type: class-toggle
+        default: false
+    -
+        id: ownaka-flash-off
+        title: Desligar o flash E-Ink nos botões
+        type: class-toggle
+        default: false
+    -
+        id: ownaka-status-off
+        title: Esconder o indicador "online" na barra de status
+        type: class-toggle
+        default: false
+
+*/
+
+/* ==========================================================================
+   1. FONTE E FORMA
+   ========================================================================== */
+body {
+  --ownaka-font: 'Commit Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --font-text-theme: var(--ownaka-font);
+  --font-interface-theme: var(--ownaka-font);
+  --font-monospace-theme: var(--ownaka-font);
+
+  --font-text-size: 15px;
+  --font-ui-small: 12px;
+  --font-ui-smaller: 11px;
+  --line-height-normal: 1.7;
+  --line-height-tight: 1.35;
+  --file-line-width: 760px;
+
+  /* Cantos retos, como no site */
+  --radius-s: 0px;
+  --radius-m: 0px;
+  --radius-l: 0px;
+  --radius-xl: 0px;
+  --checkbox-radius: 0px;
+  --button-radius: 0px;
+  --input-radius: 0px;
+  --tag-radius: 0px;
+  --callout-radius: 0px;
+  --modal-radius: 0px;
+  --tab-radius: 0px;
+  --tab-radius-active: 0px;
+  --clickable-icon-radius: 0px;
+  --toggle-radius: 0px;
+  --toggle-thumb-radius: 0px;
+  --slider-thumb-radius: 0px;
+  --embed-border-radius: 0px;
+  --image-radius: 0px;
+  --code-radius: 0px;
+  --blockquote-radius: 0px;
+
+  /* Peso e ritmo dos títulos */
+  --h1-size: 1.75em;
+  --h2-size: 1.4em;
+  --h3-size: 1.18em;
+  --h4-size: 0.82em;
+  --h5-size: 0.78em;
+  --h6-size: 0.74em;
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 700;
+  --h4-weight: 700;
+  --h5-weight: 700;
+  --h6-weight: 700;
+  --h1-line-height: 1.3;
+  --h2-line-height: 1.35;
+  --heading-spacing: 1.6em;
+  --bold-weight: 700;
+  --inline-title-size: 1.75em;
+  --inline-title-weight: 700;
+
+  --border-width: 1px;
+  --tag-border-width: 1px;
+  --tag-padding-x: 7px;
+  --tag-padding-y: 1px;
+  --list-indent: 1.9em;
+
+  /* Fundo de pontinhos */
+  --dot-opacity: 0.07;
+  --dot-spacing: 24px;
+
+  /* Sombras: o site não usa — tudo é borda */
+  --shadow-s: none;
+  --shadow-l: 0 0 0 1px var(--o-border);
+  --input-shadow: none;
+  --input-shadow-hover: none;
+}
+
+body.ownaka-font-off {
+  --font-text-theme: initial;
+  --font-interface-theme: initial;
+  --font-monospace-theme: initial;
+}
+
+/* ==========================================================================
+   2. PALETAS
+   ========================================================================== */
+
+/* Escuro: E-Ink Dark Minimal (exatamente as cores de ownaka.net) */
+.theme-dark {
+  --o-bg-page: #0c0c0c;
+  --o-bg-card: #141414;
+  --o-bg-hover: #181818;
+  --o-bg-surface: #1a1a1a;
+  --o-bg-raised: #202020;
+  --o-border: #222222;
+  --o-border-strong: #2e2e2e;
+  --o-text: #e6e1d5;
+  --o-muted: #888477;
+  --o-faint: #524f46;
+  --o-accent: #c8c2b4;
+  --o-green: #689d6a;
+  --o-white: #ffffff;
+  --o-red: #b0675f;
+  --o-amber: #b89a5e;
+  --o-blue: #7895a8;
+  --o-purple: #94829e;
+}
+
+/* Claro: papel envelhecido com tinta escura */
+.theme-light {
+  --o-bg-page: #e6e1d5;
+  --o-bg-card: #ddd8cb;
+  --o-bg-hover: #d6d0c2;
+  --o-bg-surface: #d2ccbe;
+  --o-bg-raised: #cbc4b5;
+  --o-border: #bdb6a6;
+  --o-border-strong: #a8a090;
+  --o-text: #141414;
+  --o-muted: #524f46;
+  --o-faint: #888477;
+  --o-accent: #2a2925;
+  --o-green: #4c7a4e;
+  --o-white: #000000;
+  --o-red: #8f4a43;
+  --o-amber: #86672b;
+  --o-blue: #4b6b80;
+  --o-purple: #6b5875;
+}
+
+/* ==========================================================================
+   3. MAPEAMENTO PARA AS VARIÁVEIS DO OBSIDIAN
+   ========================================================================== */
+.theme-dark,
+.theme-light {
+  --background-primary: var(--o-bg-page);
+  --background-primary-alt: var(--o-bg-card);
+  --background-secondary: var(--o-bg-page);
+  --background-secondary-alt: var(--o-bg-card);
+  --background-modifier-border: var(--o-border);
+  --background-modifier-border-hover: var(--o-border-strong);
+  --background-modifier-border-focus: var(--o-muted);
+  --background-modifier-hover: var(--o-bg-hover);
+  --background-modifier-active-hover: var(--o-bg-surface);
+  --background-modifier-form-field: var(--o-bg-surface);
+  --background-modifier-form-field-hover: var(--o-bg-raised);
+  --background-modifier-cover: color-mix(in srgb, var(--o-bg-page) 80%, transparent);
+  --background-modifier-error: var(--o-red);
+  --background-modifier-success: var(--o-green);
+  --background-modifier-message: var(--o-bg-raised);
+
+  --text-normal: var(--o-text);
+  --text-muted: var(--o-muted);
+  --text-faint: var(--o-faint);
+  --text-accent: var(--o-text);
+  --text-accent-hover: var(--o-white);
+  --text-on-accent: var(--o-bg-page);
+  --text-on-accent-inverted: var(--o-text);
+  --text-error: var(--o-red);
+  --text-success: var(--o-green);
+  --text-warning: var(--o-amber);
+  --text-selection: color-mix(in srgb, var(--o-text) 18%, transparent);
+  --text-highlight-bg: color-mix(in srgb, var(--o-green) 24%, transparent);
+  --text-highlight-bg-active: color-mix(in srgb, var(--o-green) 40%, transparent);
+
+  --interactive-normal: var(--o-bg-surface);
+  --interactive-hover: var(--o-bg-raised);
+  --interactive-accent: var(--o-text);
+  --interactive-accent-hover: var(--o-white);
+  --interactive-accent-hsl: 40, 20%, 87%;
+
+  --color-accent: var(--o-green);
+  --color-accent-1: var(--o-green);
+  --color-accent-2: var(--o-green);
+  --color-red: var(--o-red);
+  --color-orange: var(--o-amber);
+  --color-yellow: var(--o-amber);
+  --color-green: var(--o-green);
+  --color-cyan: var(--o-blue);
+  --color-blue: var(--o-blue);
+  --color-purple: var(--o-purple);
+  --color-pink: var(--o-purple);
+
+  --link-color: var(--o-text);
+  --link-color-hover: var(--o-white);
+  --link-decoration: underline;
+  --link-decoration-hover: underline;
+  --link-decoration-thickness: 1px;
+  --link-unresolved-color: var(--o-muted);
+  --link-unresolved-opacity: 1;
+  --link-unresolved-decoration-style: dashed;
+  --link-unresolved-decoration-color: var(--o-faint);
+  --link-external-color: var(--o-accent);
+  --link-external-color-hover: var(--o-white);
+
+  --bold-color: var(--o-white);
+  --italic-color: var(--o-accent);
+
+  --h1-color: var(--o-text);
+  --h2-color: var(--o-text);
+  --h3-color: var(--o-text);
+  --h4-color: var(--o-muted);
+  --h5-color: var(--o-muted);
+  --h6-color: var(--o-faint);
+  --inline-title-color: var(--o-text);
+
+  --code-background: var(--o-bg-card);
+  --code-normal: var(--o-text);
+  --code-comment: var(--o-faint);
+  --code-function: var(--o-text);
+  --code-important: var(--o-amber);
+  --code-keyword: var(--o-green);
+  --code-operator: var(--o-muted);
+  --code-property: var(--o-accent);
+  --code-punctuation: var(--o-faint);
+  --code-string: var(--o-amber);
+  --code-tag: var(--o-blue);
+  --code-value: var(--o-purple);
+
+  --blockquote-border-color: var(--o-muted);
+  --blockquote-border-thickness: 2px;
+  --blockquote-background-color: var(--o-bg-card);
+  --blockquote-color: var(--o-muted);
+  --blockquote-font-style: italic;
+
+  --hr-color: var(--o-border-strong);
+  --hr-thickness: 1px;
+
+  --list-marker-color: var(--o-faint);
+  --list-marker-color-hover: var(--o-muted);
+  --list-marker-color-collapsed: var(--o-green);
+
+  --checkbox-color: var(--o-green);
+  --checkbox-color-hover: color-mix(in srgb, var(--o-green) 80%, var(--o-white));
+  --checkbox-border-color: var(--o-faint);
+  --checkbox-border-color-hover: var(--o-green);
+  --checkbox-marker-color: var(--o-bg-page);
+  --checklist-done-color: var(--o-faint);
+  --checklist-done-decoration: line-through;
+
+  --table-border-color: var(--o-border);
+  --table-header-background: var(--o-bg-card);
+  --table-header-background-hover: var(--o-bg-hover);
+  --table-header-color: var(--o-muted);
+  --table-header-font: var(--ownaka-font);
+  --table-row-alt-background: transparent;
+  --table-row-background-hover: var(--o-bg-hover);
+  --table-selection: color-mix(in srgb, var(--o-green) 18%, transparent);
+  --table-selection-border-color: var(--o-green);
+
+  --tag-color: var(--o-accent);
+  --tag-color-hover: var(--o-white);
+  --tag-background: var(--o-bg-surface);
+  --tag-background-hover: var(--o-bg-raised);
+  --tag-border-color: var(--o-border);
+  --tag-border-color-hover: var(--o-border-strong);
+  --tag-size: 0.82em;
+
+  --embed-background: var(--o-bg-card);
+  --embed-border-left: 2px solid var(--o-border-strong);
+  --embed-padding: 4px 18px;
+
+  --footnote-size: 0.85em;
+
+  --icon-color: var(--o-muted);
+  --icon-color-hover: var(--o-text);
+  --icon-color-active: var(--o-green);
+  --icon-color-focused: var(--o-text);
+  --icon-opacity: 1;
+  --icon-opacity-hover: 1;
+  --icon-opacity-active: 1;
+  --icon-stroke: 1.5px;
+  --icon-xs-stroke-width: 1.5px;
+  --icon-s-stroke-width: 1.5px;
+  --icon-m-stroke-width: 1.5px;
+  --icon-l-stroke-width: 1.5px;
+  --icon-xl-stroke-width: 1.25px;
+
+  --titlebar-background: var(--o-bg-page);
+  --titlebar-background-focused: var(--o-bg-page);
+  --titlebar-text-color: var(--o-muted);
+  --titlebar-text-color-focused: var(--o-text);
+  --tab-background-active: var(--o-bg-page);
+  --tab-container-background: var(--o-bg-page);
+  --tab-text-color: var(--o-faint);
+  --tab-text-color-active: var(--o-muted);
+  --tab-text-color-focused-active: var(--o-text);
+  --tab-text-color-focused-active-current: var(--o-text);
+  --tab-divider-color: var(--o-border);
+  --tab-outline-color: var(--o-border);
+  --ribbon-background: var(--o-bg-page);
+  --ribbon-background-collapsed: var(--o-bg-page);
+  --divider-color: var(--o-border);
+  --divider-color-hover: var(--o-muted);
+  --divider-width: 1px;
+  --status-bar-background: var(--o-bg-page);
+  --status-bar-border-color: var(--o-border);
+  --status-bar-text-color: var(--o-faint);
+  --nav-item-color: var(--o-muted);
+  --nav-item-color-hover: var(--o-text);
+  --nav-item-color-active: var(--o-text);
+  --nav-item-color-selected: var(--o-text);
+  --nav-item-background-hover: var(--o-bg-hover);
+  --nav-item-background-active: var(--o-bg-surface);
+  --nav-item-background-selected: color-mix(in srgb, var(--o-green) 14%, transparent);
+  --nav-collapse-icon-color: var(--o-faint);
+  --nav-indentation-guide-color: var(--o-border);
+
+  --modal-background: var(--o-bg-card);
+  --modal-border-color: var(--o-border-strong);
+  --prompt-border-color: var(--o-border-strong);
+
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: var(--o-border);
+  --scrollbar-active-thumb-bg: var(--o-faint);
+
+  --toggle-thumb-color: var(--o-bg-page);
+  --slider-track-background: var(--o-border);
+  --slider-thumb-border-color: var(--o-text);
+
+  --graph-line: var(--o-border-strong);
+  --graph-node: var(--o-muted);
+  --graph-node-focused: var(--o-green);
+  --graph-node-unresolved: var(--o-faint);
+  --graph-node-tag: var(--o-amber);
+  --graph-node-attachment: var(--o-blue);
+  --graph-text: var(--o-text);
+
+  --canvas-background: var(--o-bg-page);
+  --canvas-dot-pattern: color-mix(in srgb, var(--o-text) 14%, transparent);
+  --canvas-card-label-color: var(--o-faint);
+
+  --callout-border-width: 1px;
+  --callout-border-opacity: 1;
+  --callout-padding: 14px 18px;
+  --callout-title-weight: 700;
+  --callout-title-size: 0.72em;
+  --callout-content-background: transparent;
+}
+
+/* ==========================================================================
+   4. FUNDO DE PONTINHOS (a assinatura do site)
+   ========================================================================== */
+.workspace-leaf-content[data-type="markdown"] .view-content,
+.workspace-leaf-content[data-type="empty"] .view-content {
+  position: relative;
+}
+
+body:not(.ownaka-dots-off) .workspace-leaf-content[data-type="markdown"] .view-content::before,
+body:not(.ownaka-dots-off) .workspace-leaf-content[data-type="empty"] .view-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--o-text) 1px, transparent 1px);
+  background-size: var(--dot-spacing) var(--dot-spacing);
+  opacity: var(--dot-opacity);
+}
+
+.workspace-leaf-content[data-type="markdown"] .view-content > *,
+.workspace-leaf-content[data-type="empty"] .view-content > * {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
+/* Desligar por nota: cssclasses: ownaka-dots-off */
+.workspace-leaf-content[data-type="markdown"] .view-content:has(.ownaka-dots-off)::before {
+  display: none;
+}
+
+/* ==========================================================================
+   5. INTERFACE
+   ========================================================================== */
+
+/* Seleção de texto */
+::selection {
+  background-color: var(--text-selection);
+}
+
+/* Scrollbar fina e quadrada */
+body:not(.native-scrollbars) ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+body:not(.native-scrollbars) ::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  border: none;
+  background-color: var(--scrollbar-thumb-bg);
+}
+body:not(.native-scrollbars) ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-active-thumb-bg);
+}
+
+/* Barras laterais: separadas por uma linha fina, como a sidebar do site */
+.workspace-split.mod-left-split,
+.workspace-split.mod-right-split {
+  background-color: var(--o-bg-page);
+}
+.workspace-split.mod-left-split .workspace-leaf-resize-handle,
+.workspace-split.mod-right-split .workspace-leaf-resize-handle {
+  background-color: var(--o-border);
+}
+
+/* Abas: discretas; a ativa ganha uma linha verde em cima */
+.workspace-tab-header {
+  letter-spacing: 0.02em;
+}
+.workspace-tab-header-inner-title {
+  font-size: var(--font-ui-small);
+}
+.workspace .mod-root .workspace-tab-header.is-active {
+  box-shadow: inset 0 1px 0 var(--o-green);
+}
+.workspace .mod-root .workspace-tab-header.is-active::before,
+.workspace .mod-root .workspace-tab-header.is-active::after {
+  display: none;
+}
+.workspace-tab-header-container {
+  border-bottom: 1px solid var(--o-border);
+}
+
+/* Cabeçalho da nota */
+.view-header-title {
+  font-size: var(--font-ui-small);
+  letter-spacing: 0.04em;
+}
+
+/* Explorador de arquivos com o indicador "›" do site */
+.nav-file-title,
+.nav-folder-title,
+.tree-item-self {
+  font-size: var(--font-ui-small);
+  letter-spacing: 0.02em;
+}
+.nav-folder-title-content {
+  text-transform: lowercase;
+}
+.nav-file-title.is-active,
+.tree-item-self.is-active {
+  font-weight: 700;
+  color: var(--o-text);
+  background-color: var(--o-bg-surface);
+}
+.nav-file-title.is-active .nav-file-title-content::before,
+.tree-item-self.is-active .tree-item-inner::before {
+  content: "› ";
+  color: var(--o-green);
+}
+.nav-file-tag {
+  background-color: var(--o-bg-surface);
+  border: 1px solid var(--o-border);
+  color: var(--o-muted);
+  font-size: 0.64rem;
+  padding: 0 4px;
+  letter-spacing: 0.04em;
+}
+
+/* Ícone ativo da faixa lateral e dos botões em verde */
+.side-dock-ribbon-action.is-active .svg-icon,
+.clickable-icon.is-active .svg-icon,
+.workspace-tab-header.is-active .workspace-tab-header-inner-icon .svg-icon {
+  color: var(--o-green);
+}
+
+/* Barra de status com o quadradinho verde "online" do site */
+.status-bar {
+  font-size: var(--font-ui-smaller);
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--o-border);
+  border-left: 1px solid var(--o-border);
+  padding: 2px 10px;
+}
+body:not(.ownaka-status-off) .status-bar::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin: auto 8px auto 2px;
+  background-color: var(--o-green);
+  flex-shrink: 0;
+}
+
+/* Botões: borda fina, sem sombra, e o flash E-Ink ao clicar */
+button,
+.mod-cta,
+.dropdown {
+  border: 1px solid var(--o-border-strong);
+  box-shadow: none;
+  letter-spacing: 0.03em;
+}
+button:not(.clickable-icon):hover,
+.dropdown:hover {
+  border-color: var(--o-text);
+}
+button.mod-cta {
+  background-color: var(--o-text);
+  color: var(--o-bg-page);
+  border-color: var(--o-text);
+}
+button.mod-cta:hover {
+  background-color: var(--o-white);
+}
+body:not(.ownaka-flash-off) button:not(.clickable-icon):active,
+body:not(.ownaka-flash-off) .mod-cta:active {
+  animation: ownaka-eink-flash 200ms steps(3, end);
+}
+
+@keyframes ownaka-eink-flash {
+  0% { filter: none; }
+  25% { filter: invert(1) contrast(180%); }
+  60% { filter: invert(0.2) contrast(110%); }
+  80% { filter: invert(0.85); }
+  100% { filter: none; }
+}
+
+/* Campos de texto */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+  border: 1px solid var(--o-border);
+  background-color: var(--o-bg-surface);
+}
+input[type="text"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+  border-color: var(--o-muted);
+  box-shadow: none;
+}
+
+/* Interruptores quadrados */
+.checkbox-container {
+  background-color: var(--o-border);
+  border: 1px solid var(--o-border-strong);
+}
+.checkbox-container.is-enabled {
+  background-color: var(--o-green);
+  border-color: var(--o-green);
+}
+.checkbox-container::after {
+  box-shadow: none;
+}
+
+/* Janelas, paleta de comandos e menus como os cards do site */
+.modal,
+.prompt,
+.menu,
+.suggestion-container,
+.popover.hover-popover {
+  border: 1px solid var(--o-border-strong);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+.modal-title,
+.setting-item-heading .setting-item-name {
+  letter-spacing: -0.01em;
+}
+.suggestion-item.is-selected,
+.menu-item.selected:not(.is-disabled):not(.is-label) {
+  background-color: var(--o-bg-surface);
+  box-shadow: inset 2px 0 0 var(--o-green);
+}
+.prompt-input {
+  border-bottom: 1px solid var(--o-border) !important;
+}
+.prompt-instructions {
+  color: var(--o-faint);
+  font-size: var(--font-ui-smaller);
+  letter-spacing: 0.04em;
+}
+
+/* Dicas flutuantes */
+.tooltip {
+  background-color: var(--o-text);
+  color: var(--o-bg-page);
+  border-radius: 0;
+  font-size: var(--font-ui-smaller);
+  letter-spacing: 0.03em;
+  box-shadow: none;
+}
+.tooltip .tooltip-arrow {
+  display: none;
+}
+
+/* Avisos */
+.notice {
+  background-color: var(--o-bg-card);
+  color: var(--o-text);
+  border: 1px solid var(--o-border-strong);
+  border-left: 2px solid var(--o-green);
+  box-shadow: none;
+}
+
+/* Configurações: títulos de seção como os rótulos [ASSIM] do site */
+.vertical-tab-header-group-title {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--o-faint);
+  font-size: var(--font-ui-smaller);
+}
+.vertical-tab-nav-item.is-active {
+  background-color: var(--o-bg-surface);
+  box-shadow: inset 2px 0 0 var(--o-green);
+  color: var(--o-text);
+}
+
+/* ==========================================================================
+   6. MARKDOWN — LEITURA E EDIÇÃO
+   ========================================================================== */
+
+/* Título da nota */
+.inline-title {
+  letter-spacing: -0.02em;
+  padding-bottom: 0.25em;
+}
+
+/* Títulos */
+.markdown-rendered h1,
+.HyperMD-header-1 {
+  letter-spacing: -0.02em;
+}
+.markdown-rendered h2,
+.HyperMD-header-2 {
+  letter-spacing: -0.01em;
+}
+.markdown-rendered h2 {
+  border-bottom: 1px solid var(--o-border);
+  padding-bottom: 6px;
+}
+
+/* H3: o indicador "›" da navegação do site */
+.markdown-rendered h3::before {
+  content: "› ";
+  color: var(--o-green);
+  font-weight: 400;
+}
+
+/* H4–H6: rótulos pequenos em caixa alta, como [SOBRE] e [CADERNO TÉCNICO] */
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6,
+.HyperMD-header-4 .cm-header,
+.HyperMD-header-5 .cm-header,
+.HyperMD-header-6 .cm-header {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.markdown-rendered h4::before {
+  content: "[";
+  color: var(--o-faint);
+}
+.markdown-rendered h4::after {
+  content: "]";
+  color: var(--o-faint);
+}
+
+/* Títulos numerados [01], [02]... (opção global ou cssclasses: ownaka-numbered) */
+body.ownaka-numbered .markdown-preview-sizer,
+.ownaka-numbered .markdown-preview-sizer,
+body.ownaka-numbered .cm-contentContainer,
+.ownaka-numbered .cm-contentContainer {
+  counter-reset: ownaka-h2;
+}
+body.ownaka-numbered .markdown-rendered h2,
+.ownaka-numbered.markdown-rendered h2,
+.ownaka-numbered .markdown-rendered h2 {
+  counter-increment: ownaka-h2;
+}
+body.ownaka-numbered .markdown-rendered h2::before,
+.ownaka-numbered.markdown-rendered h2::before,
+.ownaka-numbered .markdown-rendered h2::before {
+  content: "[" counter(ownaka-h2, decimal-leading-zero) "] ";
+  color: var(--o-faint);
+  font-weight: 400;
+  font-size: 0.6em;
+  vertical-align: middle;
+  letter-spacing: 0.06em;
+}
+
+/* Negrito, itálico e marca-texto */
+.markdown-rendered mark,
+.cm-s-obsidian span.cm-highlight {
+  color: var(--o-text);
+  padding: 0 2px;
+}
+
+/* Links com sublinhado fino e espaçado */
+.markdown-rendered a,
+.cm-s-obsidian span.cm-hmd-internal-link,
+.cm-s-obsidian span.cm-link {
+  text-underline-offset: 3px;
+  text-decoration-color: var(--o-faint);
+}
+.markdown-rendered a:hover {
+  text-decoration-color: var(--o-text);
+}
+.markdown-rendered a.external-link {
+  background-image: none;
+  padding-right: 0;
+}
+.markdown-rendered a.external-link::after {
+  content: " ↗";
+  font-size: 0.8em;
+  color: var(--o-faint);
+}
+
+/* Listas com o traço "–" do site */
+body:not(.ownaka-dash-off) .list-bullet::after {
+  content: "–";
+  background-color: transparent;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  color: var(--list-marker-color);
+  font-size: 0.95em;
+  line-height: 1;
+}
+body:not(.ownaka-dash-off) .is-collapsed .list-bullet::after {
+  content: "+";
+  color: var(--list-marker-color-collapsed);
+  box-shadow: none;
+}
+.markdown-rendered ol > li::marker {
+  color: var(--o-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Checkboxes quadradas com o verde "online" */
+input[type="checkbox"] {
+  border-radius: 0;
+  border-width: 1px;
+}
+input[type="checkbox"]:checked {
+  background-color: color-mix(in srgb, var(--o-green) 15%, transparent);
+  border: 1px solid var(--o-green);
+}
+input[type="checkbox"]:checked::after {
+  background-color: var(--o-green);
+}
+
+/* Checkboxes alternativas: [/] em andamento · [-] cancelada · [>] adiada
+   [!] importante · [?] dúvida · [*] ideia */
+input[type="checkbox"][data-task="/"]:checked,
+input[type="checkbox"][data-task="-"]:checked,
+input[type="checkbox"][data-task=">"]:checked,
+input[type="checkbox"][data-task="!"]:checked,
+input[type="checkbox"][data-task="?"]:checked,
+input[type="checkbox"][data-task="*"]:checked {
+  -webkit-mask-image: none;
+}
+input[type="checkbox"][data-task="/"]:checked::after,
+input[type="checkbox"][data-task="-"]:checked::after,
+input[type="checkbox"][data-task=">"]:checked::after,
+input[type="checkbox"][data-task="!"]:checked::after,
+input[type="checkbox"][data-task="?"]:checked::after,
+input[type="checkbox"][data-task="*"]:checked::after {
+  -webkit-mask-image: none;
+  mask-image: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72em;
+  font-weight: 700;
+  line-height: 1;
+}
+input[type="checkbox"][data-task="/"]:checked {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--o-amber) 40%, transparent) 50%, transparent 50%);
+  border-color: var(--o-amber);
+}
+input[type="checkbox"][data-task="-"]:checked {
+  background-color: transparent;
+  border-color: var(--o-faint);
+}
+input[type="checkbox"][data-task="-"]:checked::after { content: "–"; color: var(--o-faint); }
+input[type="checkbox"][data-task=">"]:checked {
+  background-color: color-mix(in srgb, var(--o-blue) 15%, transparent);
+  border-color: var(--o-blue);
+}
+input[type="checkbox"][data-task=">"]:checked::after { content: "›"; color: var(--o-blue); }
+input[type="checkbox"][data-task="!"]:checked {
+  background-color: color-mix(in srgb, var(--o-red) 15%, transparent);
+  border-color: var(--o-red);
+}
+input[type="checkbox"][data-task="!"]:checked::after { content: "!"; color: var(--o-red); }
+input[type="checkbox"][data-task="?"]:checked {
+  background-color: color-mix(in srgb, var(--o-amber) 15%, transparent);
+  border-color: var(--o-amber);
+}
+input[type="checkbox"][data-task="?"]:checked::after { content: "?"; color: var(--o-amber); }
+input[type="checkbox"][data-task="*"]:checked {
+  background-color: color-mix(in srgb, var(--o-purple) 15%, transparent);
+  border-color: var(--o-purple);
+}
+input[type="checkbox"][data-task="*"]:checked::after { content: "*"; color: var(--o-purple); }
+
+li[data-task="/"],
+li[data-task=">"],
+li[data-task="!"],
+li[data-task="?"],
+li[data-task="*"],
+.HyperMD-task-line[data-task="/"],
+.HyperMD-task-line[data-task=">"],
+.HyperMD-task-line[data-task="!"],
+.HyperMD-task-line[data-task="?"],
+.HyperMD-task-line[data-task="*"] {
+  text-decoration: none;
+  color: var(--o-text);
+}
+li[data-task="-"],
+.HyperMD-task-line[data-task="-"] {
+  text-decoration: line-through;
+  color: var(--o-faint);
+}
+
+/* Citações */
+.markdown-rendered blockquote {
+  padding: 10px 18px;
+  margin: 1.4em 0;
+}
+
+/* Código inline e blocos como os cards do site */
+.markdown-rendered code,
+.cm-s-obsidian span.cm-inline-code {
+  border: 1px solid var(--o-border);
+  padding: 1px 5px;
+  font-size: 0.88em;
+}
+.markdown-rendered pre {
+  border: 1px solid var(--o-border);
+  padding: 16px 18px;
+}
+.markdown-rendered pre code {
+  border: none;
+  padding: 0;
+  font-size: 0.85em;
+}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  background-color: var(--o-bg-card);
+  border-left: 1px solid var(--o-border);
+  border-right: 1px solid var(--o-border);
+}
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-begin {
+  border-top: 1px solid var(--o-border);
+}
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-end {
+  border-bottom: 1px solid var(--o-border);
+}
+.copy-code-button {
+  border: 1px solid var(--o-border);
+  font-size: var(--font-ui-smaller);
+  letter-spacing: 0.04em;
+}
+
+/* Tabelas: cabeçalho como rótulo do site */
+.markdown-rendered table {
+  border: 1px solid var(--o-border);
+  border-collapse: collapse;
+}
+.markdown-rendered th,
+.cm-table-widget th {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78em;
+  font-weight: 700;
+}
+.markdown-rendered td,
+.markdown-rendered th {
+  padding: 8px 12px;
+}
+.markdown-rendered td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Linha horizontal tracejada, com o "═" do leitor do site */
+.markdown-rendered hr {
+  border: none;
+  border-top: 1px dashed var(--o-border-strong);
+  margin: 2.4em 0;
+}
+
+/* Tags como os badges do site */
+.tag,
+.cm-s-obsidian span.cm-hashtag {
+  border: 1px solid var(--tag-border-color);
+  letter-spacing: 0.04em;
+}
+.cm-s-obsidian span.cm-hashtag-begin {
+  border-right: none;
+}
+.cm-s-obsidian span.cm-hashtag-end {
+  border-left: none;
+}
+
+/* Imagens com o filtro E-Ink (desligue na config ou com cssclasses: ownaka-eink-off) */
+body:not(.ownaka-eink-off) .markdown-rendered img,
+body:not(.ownaka-eink-off) .markdown-source-view img {
+  filter: grayscale(100%) contrast(125%) brightness(95%) sepia(20%);
+  transition: filter 0.25s ease;
+}
+body:not(.ownaka-eink-off) .markdown-rendered img:hover,
+body:not(.ownaka-eink-off) .markdown-source-view img:hover {
+  filter: grayscale(100%) contrast(135%) brightness(100%) sepia(15%);
+}
+.ownaka-eink-off img,
+.ownaka-eink-off .markdown-rendered img,
+.ownaka-eink-off.markdown-preview-view img {
+  filter: none !important;
+}
+.markdown-rendered img,
+.markdown-source-view img {
+  border: 1px solid var(--o-border);
+}
+
+/* Notas incorporadas */
+.markdown-embed,
+.internal-embed.markdown-embed {
+  border: 1px solid var(--o-border);
+  border-left: 2px solid var(--o-border-strong);
+}
+.markdown-embed-title {
+  font-size: 0.78em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--o-faint);
+}
+
+/* Notas de rodapé */
+.footnotes {
+  color: var(--o-muted);
+}
+.footnote-ref a,
+.footnote-backref {
+  color: var(--o-green);
+  text-decoration: none;
+}
+
+/* Propriedades (frontmatter) como o card [IDENTIDADE] */
+.metadata-container {
+  border: 1px solid var(--o-border);
+  background-color: var(--o-bg-card);
+  padding: 10px 14px;
+  --metadata-label-text-color: var(--o-faint);
+  --metadata-label-font-size: 0.78em;
+}
+.metadata-properties-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72em;
+  color: var(--o-faint);
+}
+.metadata-property-key {
+  letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   7. CALLOUTS — cards com rótulo [TIPO]
+   ========================================================================== */
+.callout {
+  background-color: var(--o-bg-card);
+  border: 1px solid var(--o-border);
+  border-left: 2px solid rgb(var(--callout-color));
+  mix-blend-mode: normal;
+}
+.callout-title {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  gap: 8px;
+}
+.callout-title-inner::before {
+  content: "[";
+  color: var(--o-faint);
+}
+.callout-title-inner::after {
+  content: "]";
+  color: var(--o-faint);
+}
+.callout-icon .svg-icon {
+  width: 14px;
+  height: 14px;
+}
+.callout-content {
+  color: var(--o-text);
+}
+
+/* Cores dos callouts dentro da paleta do tema (em RGB, como o Obsidian pede) */
+.theme-dark .callout {
+  --callout-default: 136, 132, 119;
+  --callout-info: 120, 149, 168;
+  --callout-todo: 104, 157, 106;
+  --callout-tip: 104, 157, 106;
+  --callout-success: 104, 157, 106;
+  --callout-question: 184, 154, 94;
+  --callout-warning: 184, 154, 94;
+  --callout-fail: 176, 103, 95;
+  --callout-error: 176, 103, 95;
+  --callout-bug: 176, 103, 95;
+  --callout-example: 148, 130, 158;
+  --callout-quote: 82, 79, 70;
+  --callout-summary: 200, 194, 180;
+  --callout-important: 104, 157, 106;
+}
+.theme-light .callout {
+  --callout-default: 82, 79, 70;
+  --callout-info: 75, 107, 128;
+  --callout-todo: 76, 122, 78;
+  --callout-tip: 76, 122, 78;
+  --callout-success: 76, 122, 78;
+  --callout-question: 134, 103, 43;
+  --callout-warning: 134, 103, 43;
+  --callout-fail: 143, 74, 67;
+  --callout-error: 143, 74, 67;
+  --callout-bug: 143, 74, 67;
+  --callout-example: 107, 88, 117;
+  --callout-quote: 136, 132, 119;
+  --callout-summary: 42, 41, 37;
+  --callout-important: 76, 122, 78;
+}
+
+/* Callout extra: > [!card] — um card limpo, igual aos do site */
+.callout[data-callout="card"] {
+  --callout-color: var(--callout-default);
+  --callout-icon: lucide-square;
+  border-left-width: 1px;
+}
+.callout[data-callout="card"]:hover {
+  border-color: var(--o-border-strong);
+  background-color: var(--o-bg-hover);
+}
+
+/* Callout extra: > [!terminal] — saída de terminal com prompt "$" */
+.callout[data-callout="terminal"] {
+  --callout-color: var(--callout-todo);
+  --callout-icon: lucide-terminal;
+  background-color: var(--o-bg-page);
+}
+.callout[data-callout="terminal"] .callout-content p::before {
+  content: "$ ";
+  color: var(--o-green);
+}
+
+/* Callout extra: > [!online] — o selo verde de status */
+.callout[data-callout="online"] {
+  --callout-color: var(--callout-success);
+  --callout-icon: lucide-circle-dot;
+  background-color: color-mix(in srgb, var(--o-green) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--o-green) 30%, transparent);
+}
+
+/* ==========================================================================
+   8. CSSCLASSES POR NOTA
+   cssclasses: ownaka-wide · ownaka-numbered · ownaka-dots-off · ownaka-eink-off
+               ownaka-center · ownaka-cards
+   ========================================================================== */
+
+/* Nota larga */
+.ownaka-wide {
+  --file-line-width: 1100px;
+}
+
+/* Título e texto centralizados, como a citação do site */
+.ownaka-center .inline-title,
+.ownaka-center .markdown-preview-sizer > div > p {
+  text-align: center;
+}
+
+/* Cada H2 vira o topo de um card */
+.ownaka-cards.markdown-rendered h2,
+.ownaka-cards .markdown-rendered h2 {
+  border: 1px solid var(--o-border);
+  border-bottom: none;
+  background-color: var(--o-bg-card);
+  padding: 14px 18px 6px;
+  margin-bottom: 0;
+  font-size: 1.1em;
+}
+
+/* ==========================================================================
+   9. MOBILE E ACESSIBILIDADE
+   ========================================================================== */
+.is-mobile {
+  --font-text-size: 15px;
+  --dot-spacing: 20px;
+}
+.is-mobile .status-bar::before {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button:active,
+  .mod-cta:active {
+    animation: none !important;
+  }
+  .markdown-rendered img {
+    transition: none !important;
+  }
+}
