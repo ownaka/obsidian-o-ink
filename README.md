@@ -35,6 +35,8 @@ A paleta de comandos, os menus e as janelas viram cards com borda, e o item sele
 
 O gráfico de conexões e o Canvas usam as mesmas cores, e o Canvas ganha os mesmos pontinhos do fundo das notas.
 
+O tema também foi ajustado para o Obsidian no Android, no celular e no tablet: a barra de ferramentas, as gavetas laterais e os menus seguem o mesmo visual, os itens são fáceis de tocar e o texto, as tabelas e os blocos de código cabem na tela.
+
 ## O que muda nas notas
 
 Os títulos têm uma hierarquia clara. O H2 ganha uma linha fina embaixo e o H3 recebe o `›` verde. Do H4 em diante, os títulos viram rótulos pequenos em caixa alta, e o H4 aparece entre colchetes, `[ASSIM]`, do jeito que os cards do site são identificados.
