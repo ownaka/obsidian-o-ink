@@ -1,88 +1,68 @@
-# ☵ O·Ink para Obsidian
+# O·Ink
 
-**O** de Ownaka, **Ink** de tinta e de E-Ink.
+Um tema para o [Obsidian](https://obsidian.md) que parece tinta em papel eletrônico.
 
-Tema minimalista em estilo **E-Ink**, feito a partir da identidade visual de [ownaka.net](https://ownaka.net).
-Fundo de pontinhos quase imperceptível, tipografia **Commit Mono** em tudo, cantos retos, bordas finas e um único verde de destaque, o mesmo do selo "online" do site.
+O nome junta duas coisas: o **O** vem de Ownaka, o apelido que eu uso em tudo, e o **Ink** vem de tinta e das telas E-Ink. O visual nasceu do meu site, [ownaka.net](https://ownaka.net). Eu gostava tanto de abrir ele que quis ter a mesma sensação no lugar onde passo mais tempo escrevendo.
 
-> Entender como algo funciona por dentro é a melhor parte. Explicar pra alguém é a segunda.
+## A ideia
 
-<!-- Adicione aqui os prints reais do tema:
-![O·Ink — modo escuro](assets/screenshots/dark.png)
-![O·Ink — modo claro](assets/screenshots/light.png)
--->
+Eu queria um tema que não disputasse atenção com o que eu estou escrevendo. Então algumas regras guiaram tudo:
 
-## Princípios
+- **Pouca cor.** O texto é bege de papel envelhecido sobre um preto quase puro. Só existe uma cor de destaque, um verde apagado, e ela aparece apenas no que está ativo, concluído ou "online".
+- **Linha em vez de sombra.** Cards, menus e blocos são separados por bordas de 1px, sem sombras nem cantos arredondados.
+- **Uma fonte só.** Tudo usa a [Commit Mono](https://commitmono.com), da interface ao texto das notas. Ela já vem dentro do tema, então funciona sem instalar nada.
+- **Detalhes que você sente mais do que vê.** Um fundo de pontinhos quase invisível, um flash rápido quando você clica num botão, como uma tela E-Ink trocando de página.
 
-- **Tinta e papel.** Duas paletas: escuro (preto `#0c0c0c` com texto bege de papel `#e6e1d5`) e claro (papel envelhecido com tinta escura).
-- **Uma cor só pra chamar atenção.** O verde `#689d6a` aparece no que está ativo, feito ou online. O resto fica em tons de cinza quente.
-- **Borda no lugar de sombra.** Tudo é separado por linhas de 1px, como os cards do site.
-- **Monoespaçado de ponta a ponta.** A Commit Mono vem embutida no tema, não precisa instalar nada.
+Tem também um modo claro, que inverte a lógica: papel envelhecido com tinta escura.
 
 ## Instalação
 
-### Manual
+Baixe o `theme.css` e o `manifest.json`, crie a pasta `.obsidian/themes/O·Ink/` dentro do seu cofre e coloque os dois arquivos lá. Depois, em **Configurações → Aparência → Temas**, é só escolher **O·Ink**.
 
-1. Baixe `theme.css` e `manifest.json` (ou a release mais recente).
-2. No seu cofre, crie a pasta `.obsidian/themes/O·Ink/` e coloque os dois arquivos nela.
-3. Em **Configurações → Aparência → Temas**, escolha **O·Ink**.
-
-### Pela linha de comando
+Se você preferir pelo terminal:
 
 ```bash
 git clone https://github.com/ownaka/obsidian-o-ink.git
 cd obsidian-o-ink
-python3 scripts/build.py --vault "~/caminho/do/seu/cofre"
+python3 scripts/build.py --vault ~/caminho/do/seu/cofre
 ```
 
-## O que o tema muda
+## O que muda na interface
 
-### Interface
-- Fundo de pontinhos sutil atrás das notas, com intensidade e espaçamento ajustáveis.
-- Aba ativa com uma linha verde no topo.
-- Explorador de arquivos com o indicador `›` do site no arquivo aberto e pastas em minúsculas.
-- Barra de status com o quadradinho verde "online".
-- Paleta de comandos, menus e janelas como cards, com o item selecionado marcado em verde.
-- Botões com o **flash E-Ink**: piscam invertidos ao clicar, como uma tela de papel eletrônico.
-- Interruptores, campos e dicas flutuantes quadrados.
-- Gráfico de conexões e Canvas na mesma paleta (o Canvas ganha os mesmos pontinhos).
+O arquivo aberto no explorador ganha um `›` verde na frente, o mesmo indicador da navegação do meu site. A aba ativa tem uma linha verde fina no topo, e a barra de status mostra um quadradinho verde, como um sinal de "online".
 
-### Markdown
-| Elemento | Como fica |
-| --- | --- |
-| H1 e H2 | Fortes, com uma linha fina embaixo do H2 |
-| H3 | Ganha o indicador `›` em verde |
-| H4 a H6 | Viram rótulos em caixa alta, com o H4 entre colchetes: `[RÓTULO]` |
-| Listas | Traço `–` no lugar da bolinha, como no site |
-| Negrito / itálico | Branco / bege |
-| Marca-texto | Verde translúcido |
-| Links | Sublinhado fino; notas que não existem ficam tracejadas; externos ganham `↗` |
-| Código | Blocos com borda, como os cards |
-| Tabelas | Cabeçalho em caixa alta, números alinhados |
-| Linha horizontal | Tracejada |
-| Imagens | Filtro E-Ink (preto e branco com leve sépia), que realça ao passar o mouse |
-| Propriedades | Viram um card, como o `[IDENTIDADE]` do site |
+A paleta de comandos, os menus e as janelas viram cards com borda, e o item selecionado é marcado por uma linha verde na lateral. Os botões piscam invertidos ao clicar. Interruptores, campos e dicas flutuantes seguem a mesma forma quadrada.
+
+O gráfico de conexões e o Canvas usam as mesmas cores, e o Canvas ganha os mesmos pontinhos do fundo das notas.
+
+## O que muda nas notas
+
+Os títulos têm uma hierarquia clara. O H2 ganha uma linha fina embaixo e o H3 recebe o `›` verde. Do H4 em diante, os títulos viram rótulos pequenos em caixa alta, e o H4 aparece entre colchetes, `[ASSIM]`, do jeito que os cards do site são identificados.
+
+As listas usam um traço `–` no lugar da bolinha. Negrito fica em branco, itálico em bege e o marca-texto em um verde translúcido. Links têm um sublinhado discreto, links para notas que ainda não existem ficam tracejados e links externos ganham uma setinha `↗`.
+
+Blocos de código e tabelas têm borda, e o cabeçalho das tabelas segue o mesmo estilo de rótulo. As imagens recebem um filtro em preto e branco com um toque de sépia, que fica um pouco mais nítido quando você passa o mouse. As propriedades da nota aparecem como um card.
 
 ### Tarefas
 
-| Sintaxe | Significado |
+Além do `[ ]` e do `[x]`, o tema reconhece outros marcadores, cada um com sua cor:
+
+| Marcador | Uso |
 | --- | --- |
-| `- [ ]` | A fazer |
-| `- [x]` | Feita (verde) |
-| `- [/]` | Em andamento |
-| `- [-]` | Cancelada |
-| `- [>]` | Adiada |
-| `- [!]` | Importante |
-| `- [?]` | Dúvida |
-| `- [*]` | Ideia |
+| `[/]` | em andamento |
+| `[-]` | cancelada |
+| `[>]` | adiada |
+| `[!]` | importante |
+| `[?]` | dúvida |
+| `[*]` | ideia |
 
 ### Callouts
 
-Todos os callouts viram cards com o título em colchetes, `[NOTA]`, `[DICA]`, nas cores do tema. E três callouts exclusivos:
+Todos os callouts do Obsidian viram cards, com o título entre colchetes e cores ajustadas à paleta. Eu também criei três que fazem sentido pro jeito que eu escrevo:
 
 ```markdown
-> [!card] Título
-> Um card limpo, igual aos do site.
+> [!card] Um card simples
+> Igual aos blocos do site.
 
 > [!terminal] Comandos
 > docker compose up -d
@@ -92,11 +72,11 @@ Todos os callouts viram cards com o título em colchetes, `[NOTA]`, `[DICA]`, na
 > O selo verde de "online".
 ```
 
-No `[!terminal]`, cada linha ganha um `$` verde na frente.
+No `[!terminal]`, cada linha ganha um `$` na frente, como num prompt.
 
-### Classes por nota (`cssclasses`)
+### Classes por nota
 
-Coloque nas propriedades da nota:
+Algumas coisas fazem sentido só em certas notas. Para isso existem classes que você coloca nas propriedades:
 
 ```yaml
 ---
@@ -105,56 +85,47 @@ cssclasses:
 ---
 ```
 
-| Classe | Efeito |
+| Classe | O que faz |
 | --- | --- |
-| `o-ink-numbered` | Numera os H2 como os cards do site: `[01]`, `[02]`… |
-| `o-ink-wide` | Deixa a nota mais larga |
-| `o-ink-cards` | Cada H2 vira o topo de um card |
-| `o-ink-center` | Centraliza título e parágrafos |
-| `o-ink-dots-off` | Tira os pontinhos só desta nota |
-| `o-ink-eink-off` | Mostra as imagens desta nota em cores |
+| `o-ink-numbered` | numera os H2 como `[01]`, `[02]`... |
+| `o-ink-wide` | deixa a nota mais larga |
+| `o-ink-cards` | transforma cada H2 no topo de um card |
+| `o-ink-center` | centraliza o título e os parágrafos |
+| `o-ink-dots-off` | tira os pontinhos do fundo |
+| `o-ink-eink-off` | mostra as imagens coloridas |
 
-## Personalização com Style Settings
+Na pasta [`docs`](docs/) tem uma nota usando quase tudo isso. Vale copiar pro seu cofre pra ver o tema funcionando de verdade.
 
-Com o plugin [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) instalado, aparece uma seção **O·Ink** com:
+## Personalização
 
-- Cor de destaque, cor do texto e cor de fundo (separadas para claro e escuro)
-- Liga/desliga, intensidade e espaçamento dos pontinhos
-- Usar a fonte do sistema em vez da Commit Mono
-- Numerar os H2 em todas as notas
-- Bolinhas em vez de traço nas listas
-- Desligar o filtro E-Ink, o flash dos botões e o indicador "online"
+Com o plugin [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) instalado, aparece uma seção do O·Ink nas configurações. Por lá dá pra trocar a cor de destaque, o texto e o fundo, ajustar a intensidade e o espaçamento dos pontinhos, voltar para a fonte do sistema, numerar os títulos em todas as notas, usar bolinhas nas listas e desligar o filtro das imagens, o flash dos botões ou o indicador da barra de status.
 
-Sem o plugin, dá pra mudar qualquer cor com um snippet. Veja a pasta [`snippets/`](snippets/).
-
-## Nota de demonstração
-
-A pasta [`docs/`](docs/) tem uma nota com todos os elementos estilizados. Copie para o seu cofre pra ver o tema completo.
+Se preferir não usar o plugin, a pasta [`snippets`](snippets/) tem dois exemplos que você pode copiar para `.obsidian/snippets/`: um troca as cores e os pontinhos, o outro usa uma fonte serifada no texto das notas mantendo a interface em Commit Mono.
 
 ## Desenvolvimento
 
-O código do tema fica em `src/ownaka.css`. O `theme.css` é gerado pelo script, que embute a fonte:
+O código do tema fica em `src/o-ink.css`. O `theme.css` é gerado a partir dele, com a fonte embutida:
 
 ```bash
-python3 scripts/build.py                      # gera theme.css
-python3 scripts/build.py --vault ~/MeuCofre   # gera e instala no cofre
+python3 scripts/build.py
 ```
 
-Depois, no Obsidian, use o comando **Recarregar o app sem salvar** pra ver as mudanças.
+Passando `--vault` com o caminho do seu cofre, o script já instala a versão nova. Depois é só rodar o comando **Recarregar o app sem salvar** no Obsidian.
 
-Sugestões e problemas são bem-vindos nas [issues](https://github.com/ownaka/obsidian-o-ink/issues).
+Se encontrar algo estranho ou tiver uma ideia, abre uma [issue](https://github.com/ownaka/obsidian-o-ink/issues). Prints mostrando o problema ajudam bastante.
 
 ## Créditos
 
-- Fonte [Commit Mono](https://commitmono.com), de Eigil Nikolajsen, sob a SIL Open Font License 1.1.
-- Inspirado na comunidade de temas do Obsidian, especialmente no cuidado de temas como o [Primary](https://github.com/primary-theme/obsidian) e o [Minimal](https://github.com/kepano/obsidian-minimal).
+A tipografia é a Commit Mono, criada por Eigil Nikolajsen e distribuída sob a SIL Open Font License 1.1.
+
+Muito do cuidado que tentei colocar aqui veio de olhar temas como o [Primary](https://github.com/primary-theme/obsidian) e o [Minimal](https://github.com/kepano/obsidian-minimal), que mostram como um tema pode ser bem pensado nos detalhes.
 
 ## Licença
 
-Código sob licença MIT. A fonte Commit Mono segue a [SIL Open Font License 1.1](assets/fonts/OFL.txt).
+O código está sob a licença [MIT](LICENSE). A fonte segue a [SIL Open Font License 1.1](assets/fonts/OFL.txt).
 
 ---
 
-**English:** O·Ink is a minimal E-Ink style theme for Obsidian, based on [ownaka.net](https://ownaka.net). Subtle dot-grid background, Commit Mono everywhere (bundled), square corners, thin borders and a single green accent. Supports Style Settings, alternate checkboxes, custom callouts (`card`, `terminal`, `online`) and per-note `cssclasses`.
+**In English:** O·Ink is a minimal, E-Ink inspired theme for Obsidian, based on my website [ownaka.net](https://ownaka.net). It uses Commit Mono everywhere (bundled), a near-invisible dot grid, square corners, thin borders and a single green accent. It supports Style Settings, alternate checkboxes, three custom callouts (`card`, `terminal`, `online`) and per-note `cssclasses`.
 
-Feito por [João Prado (ownaka)](https://ownaka.net).
+Feito por João Prado ([ownaka](https://ownaka.net)).

@@ -1,9 +1,3 @@
-/* ==========================================================================
-   O·INK — tema para Obsidian
-   E-Ink Dark Minimal · Commit Mono · cantos retos · dot grid sutil
-   Baseado em ownaka.net · por João Prado (ownaka)
-   ========================================================================== */
-
 /* @settings
 
 name: O·Ink
@@ -116,9 +110,6 @@ settings:
 
 */
 
-/* ==========================================================================
-   1. FONTE E FORMA
-   ========================================================================== */
 body {
   --o-ink-font: 'Commit Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
@@ -133,7 +124,6 @@ body {
   --line-height-tight: 1.35;
   --file-line-width: 760px;
 
-  /* Cantos retos, como no site */
   --radius-s: 0px;
   --radius-m: 0px;
   --radius-l: 0px;
@@ -155,7 +145,6 @@ body {
   --code-radius: 0px;
   --blockquote-radius: 0px;
 
-  /* Peso e ritmo dos títulos */
   --h1-size: 1.75em;
   --h2-size: 1.4em;
   --h3-size: 1.18em;
@@ -181,11 +170,9 @@ body {
   --tag-padding-y: 1px;
   --list-indent: 1.9em;
 
-  /* Fundo de pontinhos */
   --dot-opacity: 0.07;
   --dot-spacing: 24px;
 
-  /* Sombras: o site não usa — tudo é borda */
   --shadow-s: none;
   --shadow-l: 0 0 0 1px var(--o-border);
   --input-shadow: none;
@@ -198,11 +185,6 @@ body.o-ink-font-off {
   --font-monospace-theme: initial;
 }
 
-/* ==========================================================================
-   2. PALETAS
-   ========================================================================== */
-
-/* Escuro: E-Ink Dark Minimal (exatamente as cores de ownaka.net) */
 .theme-dark {
   --o-bg-page: #0c0c0c;
   --o-bg-card: #141414;
@@ -223,7 +205,6 @@ body.o-ink-font-off {
   --o-purple: #94829e;
 }
 
-/* Claro: papel envelhecido com tinta escura */
 .theme-light {
   --o-bg-page: #e6e1d5;
   --o-bg-card: #ddd8cb;
@@ -244,9 +225,6 @@ body.o-ink-font-off {
   --o-purple: #6b5875;
 }
 
-/* ==========================================================================
-   3. MAPEAMENTO PARA AS VARIÁVEIS DO OBSIDIAN
-   ========================================================================== */
 .theme-dark,
 .theme-light {
   --background-primary: var(--o-bg-page);
@@ -454,9 +432,6 @@ body.o-ink-font-off {
   --callout-content-background: transparent;
 }
 
-/* ==========================================================================
-   4. FUNDO DE PONTINHOS (a assinatura do site)
-   ========================================================================== */
 .workspace-leaf-content[data-type="markdown"] .view-content,
 .workspace-leaf-content[data-type="empty"] .view-content {
   position: relative;
@@ -481,21 +456,14 @@ body:not(.o-ink-dots-off) .workspace-leaf-content[data-type="empty"] .view-conte
   background-color: transparent;
 }
 
-/* Desligar por nota: cssclasses: o-ink-dots-off */
 .workspace-leaf-content[data-type="markdown"] .view-content:has(.o-ink-dots-off)::before {
   display: none;
 }
 
-/* ==========================================================================
-   5. INTERFACE
-   ========================================================================== */
-
-/* Seleção de texto */
 ::selection {
   background-color: var(--text-selection);
 }
 
-/* Scrollbar fina e quadrada */
 body:not(.native-scrollbars) ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -509,7 +477,6 @@ body:not(.native-scrollbars) ::-webkit-scrollbar-thumb:hover {
   background-color: var(--scrollbar-active-thumb-bg);
 }
 
-/* Barras laterais: separadas por uma linha fina, como a sidebar do site */
 .workspace-split.mod-left-split,
 .workspace-split.mod-right-split {
   background-color: var(--o-bg-page);
@@ -519,7 +486,6 @@ body:not(.native-scrollbars) ::-webkit-scrollbar-thumb:hover {
   background-color: var(--o-border);
 }
 
-/* Abas: discretas; a ativa ganha uma linha verde em cima */
 .workspace-tab-header {
   letter-spacing: 0.02em;
 }
@@ -537,13 +503,11 @@ body:not(.native-scrollbars) ::-webkit-scrollbar-thumb:hover {
   border-bottom: 1px solid var(--o-border);
 }
 
-/* Cabeçalho da nota */
 .view-header-title {
   font-size: var(--font-ui-small);
   letter-spacing: 0.04em;
 }
 
-/* Explorador de arquivos com o indicador "›" do site */
 .nav-file-title,
 .nav-folder-title,
 .tree-item-self {
@@ -573,14 +537,12 @@ body:not(.native-scrollbars) ::-webkit-scrollbar-thumb:hover {
   letter-spacing: 0.04em;
 }
 
-/* Ícone ativo da faixa lateral e dos botões em verde */
 .side-dock-ribbon-action.is-active .svg-icon,
 .clickable-icon.is-active .svg-icon,
 .workspace-tab-header.is-active .workspace-tab-header-inner-icon .svg-icon {
   color: var(--o-green);
 }
 
-/* Barra de status com o quadradinho verde "online" do site */
 .status-bar {
   font-size: var(--font-ui-smaller);
   letter-spacing: 0.04em;
@@ -597,7 +559,6 @@ body:not(.o-ink-status-off) .status-bar::before {
   flex-shrink: 0;
 }
 
-/* Botões: borda fina, sem sombra, e o flash E-Ink ao clicar */
 button,
 .mod-cta,
 .dropdown {
@@ -630,7 +591,6 @@ body:not(.o-ink-flash-off) .mod-cta:active {
   100% { filter: none; }
 }
 
-/* Campos de texto */
 input[type="text"],
 input[type="search"],
 input[type="email"],
@@ -647,7 +607,6 @@ textarea:focus {
   box-shadow: none;
 }
 
-/* Interruptores quadrados */
 .checkbox-container {
   background-color: var(--o-border);
   border: 1px solid var(--o-border-strong);
@@ -660,7 +619,6 @@ textarea:focus {
   box-shadow: none;
 }
 
-/* Janelas, paleta de comandos e menus como os cards do site */
 .modal,
 .prompt,
 .menu,
@@ -687,7 +645,6 @@ textarea:focus {
   letter-spacing: 0.04em;
 }
 
-/* Dicas flutuantes */
 .tooltip {
   background-color: var(--o-text);
   color: var(--o-bg-page);
@@ -700,7 +657,6 @@ textarea:focus {
   display: none;
 }
 
-/* Avisos */
 .notice {
   background-color: var(--o-bg-card);
   color: var(--o-text);
@@ -709,7 +665,6 @@ textarea:focus {
   box-shadow: none;
 }
 
-/* Configurações: títulos de seção como os rótulos [ASSIM] do site */
 .vertical-tab-header-group-title {
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -722,17 +677,11 @@ textarea:focus {
   color: var(--o-text);
 }
 
-/* ==========================================================================
-   6. MARKDOWN — LEITURA E EDIÇÃO
-   ========================================================================== */
-
-/* Título da nota */
 .inline-title {
   letter-spacing: -0.02em;
   padding-bottom: 0.25em;
 }
 
-/* Títulos */
 .markdown-rendered h1,
 .HyperMD-header-1 {
   letter-spacing: -0.02em;
@@ -746,14 +695,12 @@ textarea:focus {
   padding-bottom: 6px;
 }
 
-/* H3: o indicador "›" da navegação do site */
 .markdown-rendered h3::before {
   content: "› ";
   color: var(--o-green);
   font-weight: 400;
 }
 
-/* H4–H6: rótulos pequenos em caixa alta, como [SOBRE] e [CADERNO TÉCNICO] */
 .markdown-rendered h4,
 .markdown-rendered h5,
 .markdown-rendered h6,
@@ -772,7 +719,6 @@ textarea:focus {
   color: var(--o-faint);
 }
 
-/* Títulos numerados [01], [02]... (opção global ou cssclasses: o-ink-numbered) */
 body.o-ink-numbered .markdown-preview-sizer,
 .o-ink-numbered .markdown-preview-sizer,
 body.o-ink-numbered .cm-contentContainer,
@@ -795,14 +741,12 @@ body.o-ink-numbered .markdown-rendered h2::before,
   letter-spacing: 0.06em;
 }
 
-/* Negrito, itálico e marca-texto */
 .markdown-rendered mark,
 .cm-s-obsidian span.cm-highlight {
   color: var(--o-text);
   padding: 0 2px;
 }
 
-/* Links com sublinhado fino e espaçado */
 .markdown-rendered a,
 .cm-s-obsidian span.cm-hmd-internal-link,
 .cm-s-obsidian span.cm-link {
@@ -822,7 +766,6 @@ body.o-ink-numbered .markdown-rendered h2::before,
   color: var(--o-faint);
 }
 
-/* Listas com o traço "–" do site */
 body:not(.o-ink-dash-off) .list-bullet::after {
   content: "–";
   background-color: transparent;
@@ -843,7 +786,6 @@ body:not(.o-ink-dash-off) .is-collapsed .list-bullet::after {
   font-variant-numeric: tabular-nums;
 }
 
-/* Checkboxes quadradas com o verde "online" */
 input[type="checkbox"] {
   border-radius: 0;
   border-width: 1px;
@@ -856,8 +798,6 @@ input[type="checkbox"]:checked::after {
   background-color: var(--o-green);
 }
 
-/* Checkboxes alternativas: [/] em andamento · [-] cancelada · [>] adiada
-   [!] importante · [?] dúvida · [*] ideia */
 input[type="checkbox"][data-task="/"]:checked,
 input[type="checkbox"][data-task="-"]:checked,
 input[type="checkbox"][data-task=">"]:checked,
@@ -931,13 +871,11 @@ li[data-task="-"],
   color: var(--o-faint);
 }
 
-/* Citações */
 .markdown-rendered blockquote {
   padding: 10px 18px;
   margin: 1.4em 0;
 }
 
-/* Código inline e blocos como os cards do site */
 .markdown-rendered code,
 .cm-s-obsidian span.cm-inline-code {
   border: 1px solid var(--o-border);
@@ -970,7 +908,6 @@ li[data-task="-"],
   letter-spacing: 0.04em;
 }
 
-/* Tabelas: cabeçalho como rótulo do site */
 .markdown-rendered table {
   border: 1px solid var(--o-border);
   border-collapse: collapse;
@@ -990,14 +927,12 @@ li[data-task="-"],
   font-variant-numeric: tabular-nums;
 }
 
-/* Linha horizontal tracejada, com o "═" do leitor do site */
 .markdown-rendered hr {
   border: none;
   border-top: 1px dashed var(--o-border-strong);
   margin: 2.4em 0;
 }
 
-/* Tags como os badges do site */
 .tag,
 .cm-s-obsidian span.cm-hashtag {
   border: 1px solid var(--tag-border-color);
@@ -1010,7 +945,6 @@ li[data-task="-"],
   border-left: none;
 }
 
-/* Imagens com o filtro E-Ink (desligue na config ou com cssclasses: o-ink-eink-off) */
 body:not(.o-ink-eink-off) .markdown-rendered img,
 body:not(.o-ink-eink-off) .markdown-source-view img {
   filter: grayscale(100%) contrast(125%) brightness(95%) sepia(20%);
@@ -1030,7 +964,6 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   border: 1px solid var(--o-border);
 }
 
-/* Notas incorporadas */
 .markdown-embed,
 .internal-embed.markdown-embed {
   border: 1px solid var(--o-border);
@@ -1043,7 +976,6 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   color: var(--o-faint);
 }
 
-/* Notas de rodapé */
 .footnotes {
   color: var(--o-muted);
 }
@@ -1053,7 +985,6 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   text-decoration: none;
 }
 
-/* Propriedades (frontmatter) como o card [IDENTIDADE] */
 .metadata-container {
   border: 1px solid var(--o-border);
   background-color: var(--o-bg-card);
@@ -1071,9 +1002,6 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   letter-spacing: 0.03em;
 }
 
-/* ==========================================================================
-   7. CALLOUTS — cards com rótulo [TIPO]
-   ========================================================================== */
 .callout {
   background-color: var(--o-bg-card);
   border: 1px solid var(--o-border);
@@ -1101,7 +1029,6 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   color: var(--o-text);
 }
 
-/* Cores dos callouts dentro da paleta do tema (em RGB, como o Obsidian pede) */
 .theme-dark .callout {
   --callout-default: 136, 132, 119;
   --callout-info: 120, 149, 168;
@@ -1135,7 +1062,6 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   --callout-important: 76, 122, 78;
 }
 
-/* Callout extra: > [!card] — um card limpo, igual aos do site */
 .callout[data-callout="card"] {
   --callout-color: var(--callout-default);
   --callout-icon: lucide-square;
@@ -1146,7 +1072,6 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   background-color: var(--o-bg-hover);
 }
 
-/* Callout extra: > [!terminal] — saída de terminal com prompt "$" */
 .callout[data-callout="terminal"] {
   --callout-color: var(--callout-todo);
   --callout-icon: lucide-terminal;
@@ -1157,7 +1082,6 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   color: var(--o-green);
 }
 
-/* Callout extra: > [!online] — o selo verde de status */
 .callout[data-callout="online"] {
   --callout-color: var(--callout-success);
   --callout-icon: lucide-circle-dot;
@@ -1165,24 +1089,15 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   border: 1px solid color-mix(in srgb, var(--o-green) 30%, transparent);
 }
 
-/* ==========================================================================
-   8. CSSCLASSES POR NOTA
-   cssclasses: o-ink-wide · o-ink-numbered · o-ink-dots-off · o-ink-eink-off
-               o-ink-center · o-ink-cards
-   ========================================================================== */
-
-/* Nota larga */
 .o-ink-wide {
   --file-line-width: 1100px;
 }
 
-/* Título e texto centralizados, como a citação do site */
 .o-ink-center .inline-title,
 .o-ink-center .markdown-preview-sizer > div > p {
   text-align: center;
 }
 
-/* Cada H2 vira o topo de um card */
 .o-ink-cards.markdown-rendered h2,
 .o-ink-cards .markdown-rendered h2 {
   border: 1px solid var(--o-border);
@@ -1193,9 +1108,6 @@ body:not(.o-ink-eink-off) .markdown-source-view img:hover {
   font-size: 1.1em;
 }
 
-/* ==========================================================================
-   9. MOBILE E ACESSIBILIDADE
-   ========================================================================== */
 .is-mobile {
   --font-text-size: 15px;
   --dot-spacing: 20px;

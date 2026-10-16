@@ -1,12 +1,10 @@
-/* Exemplo: troque a cor de destaque e os pontinhos do O·Ink sem o Style Settings.
-   Coloque este arquivo em .obsidian/snippets/ e ative em Aparência → Trechos de CSS. */
 body.theme-dark {
-  --o-green: #7aa2c8;     /* destaque azul no lugar do verde */
+  --o-green: #7aa2c8;
 }
 body.theme-light {
   --o-green: #4b6b80;
 }
 body {
-  --dot-opacity: 0.12;    /* pontinhos mais visíveis */
+  --dot-opacity: 0.12;
   --dot-spacing: 20px;
 }
