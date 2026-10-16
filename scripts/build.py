@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera o theme.css final do O-Ink.
+"""Gera o theme.css final do O·Ink.
 
 Junta a fonte Commit Mono (embutida em base64, para funcionar sem instalar nada)
 com o código do tema em src/o-ink.css.
@@ -57,12 +57,12 @@ def main() -> None:
     print(f"theme.css gerado ({OUT.stat().st_size / 1024:.0f} KB)")
 
     if args.vault:
-        dest = Path(args.vault).expanduser() / ".obsidian" / "themes" / "O-Ink"
+        dest = Path(args.vault).expanduser() / ".obsidian" / "themes" / "O·Ink"
         dest.mkdir(parents=True, exist_ok=True)
         shutil.copy2(OUT, dest / "theme.css")
         shutil.copy2(ROOT / "manifest.json", dest / "manifest.json")
         version = json.loads((ROOT / "manifest.json").read_text())["version"]
-        print(f"O-Ink {version} instalado em {dest}")
+        print(f"O·Ink {version} instalado em {dest}")
 
 
 if __name__ == "__main__":

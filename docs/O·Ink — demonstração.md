@@ -7,7 +7,7 @@ cssclasses:
   - o-ink-numbered
 ---
 
-Esta nota mostra tudo que o tema **O-Ink** estiliza. Copie para o seu cofre e abra no modo de leitura e no modo de edição.
+Esta nota mostra tudo que o tema **O·Ink** estiliza. Copie para o seu cofre e abra no modo de leitura e no modo de edição.
 
 ## Títulos
 
