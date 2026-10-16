@@ -187,6 +187,18 @@ body.o-ink-font-off {
   --font-monospace-theme: initial;
 }
 
+body *,
+body *::before,
+body *::after {
+  border-radius: 0 !important;
+}
+body input[type="radio"],
+body input[type="radio"]::before,
+body input[type="radio"]::after,
+body [class*="avatar"] {
+  border-radius: 50% !important;
+}
+
 .theme-dark {
   --o-bg-page: #0c0c0c;
   --o-bg-card: #141414;
@@ -1315,15 +1327,23 @@ body.is-mobile .markdown-source-view.mod-cm6 .cm-scroller {
 .is-mobile .mobile-navbar-action {
   min-width: 44px;
   min-height: 44px;
-  border-radius: 0;
 }
 
-.is-mobile .view-header {
-  background-color: var(--o-bg-page);
+body.is-mobile .view-header {
+  width: 100%;
+  background-color: var(--o-bg-page) !important;
   border-bottom: 1px solid var(--o-border);
+  padding-top: env(safe-area-inset-top);
+  height: auto;
 }
 .is-mobile .view-header-title {
   font-size: var(--font-ui-small);
+}
+body.is-mobile .view-header .view-header-left,
+body.is-mobile .view-header .view-header-nav-buttons,
+body.is-mobile .view-header .view-actions {
+  background-color: transparent !important;
+  border: none;
 }
 body.is-mobile .view-header button,
 body.is-mobile .view-header .clickable-icon,
@@ -1331,8 +1351,7 @@ body.is-mobile .view-action,
 body.is-mobile .mobile-navbar button,
 body.is-mobile .mobile-navbar-action {
   border: none;
-  background-color: transparent;
-  box-shadow: none;
+  background-color: transparent !important;
   color: var(--icon-color);
 }
 body.is-mobile .view-header .clickable-icon:active,
@@ -1342,54 +1361,50 @@ body.is-mobile .mobile-navbar-action:active,
 body.is-mobile .mobile-navbar-action.is-active {
   color: var(--icon-color-active);
 }
-.is-mobile .mobile-toolbar-option:active {
-  background-color: var(--o-bg-surface);
-  color: var(--o-green);
-}
 
 .is-mobile .mobile-toolbar {
   background-color: var(--o-bg-page);
   border-top: 1px solid var(--o-border);
-  box-shadow: none;
 }
 .is-mobile .mobile-toolbar-option {
   color: var(--o-muted);
 }
-.is-mobile .mobile-toolbar-option.is-active {
+.is-mobile .mobile-toolbar-option.is-active,
+.is-mobile .mobile-toolbar-option:active {
   color: var(--o-green);
+}
+.is-mobile .mobile-toolbar-option:active {
+  background-color: var(--o-bg-surface);
 }
 
 body.is-mobile .mobile-navbar {
-  margin: 0;
-  background-color: var(--o-bg-page);
-  border: none;
-  border-top: 1px solid var(--o-border);
-  border-radius: 0 !important;
-  box-shadow: none;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: none !important;
+  background-color: var(--o-bg-page) !important;
+  border: none !important;
+  border-top: 1px solid var(--o-border) !important;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 body.is-mobile .mobile-navbar-actions {
-  background-color: transparent;
-  border: none;
-  border-radius: 0 !important;
-  box-shadow: none;
+  display: flex;
+  justify-content: space-around;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: none !important;
+  background-color: transparent !important;
+  border: none !important;
 }
-body.is-mobile .mobile-navbar-action,
-body.is-mobile .view-header .view-actions,
-body.is-mobile .view-header .view-header-nav-buttons,
-body.is-mobile .view-header .view-action,
-body.is-mobile .view-header .clickable-icon,
-body.is-mobile .menu,
-body.is-mobile .menu-item,
-body.is-mobile .menu-grabber,
-body.is-mobile .suggestion-container,
-body.is-mobile .suggestion-item {
-  border-radius: 0 !important;
+body.is-mobile .mobile-navbar-action {
+  flex: 1 1 0;
 }
 
 .is-mobile .workspace-drawer {
   background-color: var(--o-bg-page);
-  border-radius: 0;
-  box-shadow: none;
 }
 .is-mobile .workspace-drawer.mod-left {
   border-right: 1px solid var(--o-border);
@@ -1408,38 +1423,54 @@ body.is-mobile .suggestion-item {
   font-weight: 700;
   letter-spacing: -0.01em;
 }
-.is-mobile .workspace-drawer-active-tab-header {
-  background-color: var(--o-bg-card);
-  border: 1px solid var(--o-border);
-  border-radius: 0;
+body.is-mobile .workspace-drawer button,
+body.is-mobile .workspace-drawer .clickable-icon {
+  background-color: transparent !important;
+  border: none;
 }
-.is-mobile .workspace-drawer-tab-option-item {
-  border-radius: 0;
+body.is-mobile .workspace-drawer .workspace-drawer-active-tab-header {
+  background-color: transparent !important;
+  border: 1px solid var(--o-border) !important;
 }
-.is-mobile .workspace-drawer-tab-option-item.is-active,
-.is-mobile .nav-file-title.is-active,
-.is-mobile .tree-item-self.is-active,
+body.is-mobile .workspace-drawer-tab-option-item.is-active,
+body.is-mobile .workspace-drawer .nav-file-title.is-active,
+body.is-mobile .workspace-drawer .tree-item-self.is-active,
 .is-mobile .menu-item:active:not(.is-disabled):not(.is-label),
 .is-mobile .suggestion-item:active {
-  background-color: var(--o-bg-surface);
-  box-shadow: inset 2px 0 0 var(--o-green);
+  background-color: var(--o-bg-surface) !important;
+  box-shadow: inset 2px 0 0 var(--o-green) !important;
 }
 
-.is-mobile .modal,
-.is-mobile .prompt,
-.is-mobile .menu,
-.is-mobile .suggestion-container {
-  box-shadow: none;
-}
 .is-phone .modal,
 .is-phone .prompt,
 .is-phone .menu {
   border: none;
   border-top: 1px solid var(--o-border-strong);
-  border-radius: 0;
 }
-.is-mobile .modal-close-button {
-  border-radius: 0;
+
+body.is-mobile .modal,
+body.is-mobile .prompt,
+body.is-mobile .menu,
+body.is-mobile .suggestion-container,
+body.is-mobile .popover,
+body.is-mobile .notice,
+body.is-mobile .tooltip,
+body.is-mobile .document-search-container,
+body.is-mobile .view-header,
+body.is-mobile .view-header-left,
+body.is-mobile .view-header-nav-buttons,
+body.is-mobile .view-actions,
+body.is-mobile .view-header button,
+body.is-mobile .clickable-icon,
+body.is-mobile .view-action,
+body.is-mobile .mobile-toolbar,
+body.is-mobile .mobile-navbar,
+body.is-mobile .mobile-navbar-actions,
+body.is-mobile .mobile-navbar-action,
+body.is-mobile .workspace-drawer,
+body.is-mobile .workspace-drawer button,
+body.is-mobile .workspace-drawer-active-tab-header {
+  box-shadow: none !important;
 }
 
 @supports not (color: color-mix(in srgb, red 50%, blue)) {
